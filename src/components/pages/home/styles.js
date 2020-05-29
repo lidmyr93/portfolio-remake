@@ -1,6 +1,6 @@
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const slideInLeft = keyframes`
+const slideInTop = keyframes`
   from {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
@@ -14,7 +14,7 @@ const slideInLeft = keyframes`
 `;
 
 // animation to slide out the home page to the left
-const slideOutLeft = keyframes`
+const slideOutBottom = keyframes`
   from {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -31,12 +31,12 @@ const Page = styled.div``;
 
 // apply the correct animation based on the transition state class name.
 export const HomePageElm = styled(Page)`
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
   &.page-enter {
-    animation: ${slideInLeft} 0.2s forwards;
+    animation: ${slideInTop} 0.2s forwards;
   }
   &.page-exit {
-    animation: ${slideOutLeft} 0.2s forwards;
+    animation: ${slideOutBottom} 0.2s forwards;
   }
 `;
