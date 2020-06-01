@@ -18,8 +18,15 @@ export const FlexWrapper = styled.div`
   display: flex;
   justify-content: ${(props) => props.justify || "center"};
   align-items: ${(props) => props.align || "center"};
+  flex-direction: ${props => props.column && "column"};
 `;
-
+export const FlexWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: ${props => props.width || "50%"};
+  justify-content: inherit;
+  align-items: inherit;
+`
 export const TextBlock = styled.div`
   width: 50%;
   -moz-osx-font-smoothing: grayscale;

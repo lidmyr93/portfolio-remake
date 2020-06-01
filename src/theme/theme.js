@@ -1,6 +1,7 @@
 export const localTheme = {
   backgroundDark: "#181818",
   backgroundLight: "#252627",
+  cardBackground: "#353a3f",
   color: "#fff",
   menuText: "#8f1c1c",
   fontWeightLarge: 700,
