@@ -11,4 +11,6 @@ export const localTheme = {
   paddingMe: "1.5rem",
   paddingL: "3rem",
   borderRed: "red",
+  linearGradient:
+    "linear-gradient(180deg, rgba(77,74,74,1) 0%, rgba(32,35,38,1) 78%)",
 };

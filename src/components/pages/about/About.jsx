@@ -5,9 +5,12 @@ import {
   PageWrapper,
   ContentWrapper,
   FlexWrapper,
+  TextBlock,
 } from "../../../styles/general";
 import { Markdown } from "../../markdown/Markdown";
-import { MarkdownList } from "./styles";
+import { MarkdownList, FloatingHeader, Portrait } from "./styles";
+import Slider from "../../slider/Slider";
+import { SliderImage } from "../../slider/styles";
 const AboutPage = () => {
   const { data, error, fetched, loading } = useContentful({
     contentType: "about",
@@ -28,12 +31,12 @@ const AboutPage = () => {
     <TransitionWrapper className="page">
       <PageWrapper>
         <ContentWrapper>
-          <FlexWrapper justify="space-between">
-            <img
+          <FlexWrapper justify="space-evenly">
+            <Portrait
               src={content.profilePicture.fields.file.url}
               alt={content.profilePicture.fields.file.fileName}
             />
-            <div>{content.text}</div>
+            <TextBlock>{content.text}</TextBlock>
           </FlexWrapper>
 
           <MarkdownList>
@@ -42,7 +45,14 @@ const AboutPage = () => {
             ))}
           </MarkdownList>
         </ContentWrapper>
-        <div style={{ background: "purple" }}></div>
+        <Slider>
+          {content.sliderImages.fields.images.map((image) => (
+            <div style={{ position: "relative" }}>
+              <SliderImage background={`https:${image.fields.file.url}`} />
+              <FloatingHeader>{image.fields.description}</FloatingHeader>
+            </div>
+          ))}
+        </Slider>
       </PageWrapper>
     </TransitionWrapper>
   );

@@ -1,12 +1,12 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { MenuWrapper, LinkWrapper, Social, StyledSvg } from "./styles";
 import IconLink from "../icon-link/IconLink";
 
 const Menu = () => {
   return (
     <MenuWrapper>
-      <div>
+      <Link to="/">
         <StyledSvg
           id="header-logo"
           width="69"
@@ -28,7 +28,7 @@ const Menu = () => {
             mask="url(#path-1-outside-1)"
           />
         </StyledSvg>
-      </div>
+      </Link>
       <LinkWrapper>
         <IconLink text="Home" to="/" icon={["fas", "home"]} height="50px" />
         <IconLink
@@ -39,7 +39,7 @@ const Menu = () => {
         />
         <IconLink
           text="Contact"
-          to="/"
+          to="/contact"
           icon={["fas", "envelope"]}
           height="50px"
         />

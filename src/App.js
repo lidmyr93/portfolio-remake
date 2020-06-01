@@ -14,8 +14,22 @@ import {
   faMale,
   faCog,
   faEnvelope,
+  faSignature,
+  faPhone,
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faHome, faMale, faCog, faEnvelope, faLinkedin, faGithub);
+import ContactPage from "./components/pages/contact/Contact";
+library.add(
+  faHome,
+  faMale,
+  faCog,
+  faEnvelope,
+  faLinkedin,
+  faGithub,
+  faSignature,
+  faPhone,
+  faComment
+);
 
 const AppWrapper = styled.div`
   width: 100vw;
@@ -53,6 +67,7 @@ export default function App() {
                         <Switch location={location}>
                           <Route exact path="/" component={HomePage} />
                           <Route path="/about" component={AboutPage} />
+                          <Route path="/contact" component={ContactPage} />
                         </Switch>
                       </CSSTransition>
                     </TransitionGroup>
