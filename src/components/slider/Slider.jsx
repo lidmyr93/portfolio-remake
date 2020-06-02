@@ -11,11 +11,11 @@ const responsive = {
   },
 };
 const Slider = ({ children }) => {
-  console.log(children);
   return (
     <Carousel
       additionalTransfrom={0}
-      autoPlaySpeed={3000}
+      autoPlay={true}
+      autoPlaySpeed={5000}
       arrows={false}
       centerMode={false}
       className=""
@@ -30,7 +30,7 @@ const Slider = ({ children }) => {
       renderButtonGroupOutside={false}
       renderDotsOutside={false}
       responsive={responsive}
-      showDots
+      showDots={false}
       sliderClass=""
       slidesToSlide={1}
       swipeable

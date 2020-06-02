@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 
 export const TypeWrapper = styled.div`
-  ${(props) => console.log(props.type)}
   ${(props) => props.type === "list" && `${ListWrapper}`};
+  ${(props) => props.type === "card" && `${CardStyles}`};
 `;
-export const ListWrapper = css`
+const ListWrapper = css`
   h1,
   h2,
   h3 {
@@ -15,5 +15,11 @@ export const ListWrapper = css`
     list-style-type: none;
     margin: 0;
     padding: 0;
+  }
+`;
+
+const CardStyles = css`
+  p {
+    margin: 0;
   }
 `;

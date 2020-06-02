@@ -4,38 +4,46 @@ import {
   PageWrapper,
   ContentWrapper,
   FlexWrapper,
-  FlexWrap
+  FlexWrap,
+  Grid,
+  VerticalHeader,
 } from "../../../styles/general";
 import { TransitionWrapper } from "../../../styles/page-transition/index";
 import { Markdown } from "../../markdown/Markdown";
 import Card from "../../card/Card";
 
 const HomePage = () => {
-  const content= [{
-    title: "hej",
-    text: "loremowkdaodkwaodwaodwaodowakodkaokdsokadoka",
-    
-  }, 
-  {title: "hej",
-  text: "loremowkdaodkwaodwaodwaodowakodkaokdsokadoka",
-  
-}, 
-  {title: "hej",
-  text: "loremowkdaodkwaodwaodwaodowakodkaokdsokadoka",
+  const { data, error, fetched, loading } = useContentful({
+    contentType: "projects",
+    query: {
+      limit: 4,
+    },
+  });
+  if (loading || !fetched) {
+    return null;
+  }
+  if (error) {
+    console.error(error);
+    return null;
+  }
 
-}, 
-  {title: "hej",
-text: "loremowkdaodkwaodwaodwaodowakodkaokdsokadoka",
-}];
-  
+  const content = data.items;
+
   return (
     <TransitionWrapper className="page">
       <PageWrapper single>
         <FlexWrapper>
-      <FlexWrap width="70%">
-
-        {content.map(card => <Card content={card}/>)}
-      </FlexWrap>
+          <Grid
+            columns="auto auto"
+            rows="auto auto"
+            width="auto"
+            height="min-content"
+          >
+            {content.map((card) => (
+              <Card content={card} />
+            ))}
+          </Grid>
+          <VerticalHeader fontSize="2rem">Latest Projects</VerticalHeader>
         </FlexWrapper>
       </PageWrapper>
     </TransitionWrapper>

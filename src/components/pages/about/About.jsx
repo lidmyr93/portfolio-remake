@@ -40,14 +40,14 @@ const AboutPage = () => {
           </FlexWrapper>
 
           <MarkdownList>
-            {content.skills.map((skill) => (
-              <Markdown content={skill.fields.markdown} type="list" />
+            {content.skills.map((skill, i) => (
+              <Markdown content={skill.fields.markdown} type="list" key={i} />
             ))}
           </MarkdownList>
         </ContentWrapper>
         <Slider>
           {content.sliderImages.fields.images.map((image) => (
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative" }} key={image.fields.title}>
               <SliderImage background={`https:${image.fields.file.url}`} />
               <FloatingHeader>{image.fields.description}</FloatingHeader>
             </div>

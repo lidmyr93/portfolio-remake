@@ -15,3 +15,8 @@ export const localTheme = {
   linearGradient:
     "linear-gradient(180deg, rgba(77,74,74,1) 0%, rgba(32,35,38,1) 78%)",
 };
+
+export const breakpoints = {
+  mobile: "600px",
+  tablet: "1000px",
+};
