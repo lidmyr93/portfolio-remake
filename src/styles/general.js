@@ -1,10 +1,36 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+
+export const ScrollBar = css`
+
+::-webkit-scrollbar {
+-webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+width: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+background-color: ${props => props.theme.menuText};
+border-radius: 0px;
+}
+
+::-webkit-scrollbar-track {
+border-radius: 0px;
+background-color: transparent;
+}
+`;
 
 export const PageWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   height: calc(100vh - 60px);
   overflow-y: auto;
+  ${ScrollBar};
   @media screen and (min-width: 600px) {
     height: 100vh;
 
@@ -64,10 +90,12 @@ export const Button = styled.button`
   border-radius: ${(props) => props.borderRadius || "25px"};
   border: ${(props) => props.border || "none"};
   background: ${(props) => props.background || props.theme.menuText};
-
+  font-weight: ${props => props.fontWeight || "700"};
+  color: ${props => props.color || props.theme.color};
+  font-size: ${props => props.fontSize || "1.25rem"};
   cursor: pointer;
   &:hover {
-    box-shadow: 0 0 1.5em white;
+    box-shadow: 0 0 1.5em ${props => props.hoverColor || props.theme.color};
   }
 `;
 
@@ -91,3 +119,5 @@ export const VerticalHeader = styled.h2`
     align-self: ${props => props.bottom && "flex-end"};
   }
 `;
+
+

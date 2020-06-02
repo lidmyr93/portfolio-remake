@@ -24,6 +24,10 @@ const ContactPage = () => {
     const { name, value } = e.target;
     setEmailData({ [name]: value });
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(emailData);
+  }
   return (
     <PageWrapper single>
       <FlexWrapper>
@@ -33,7 +37,7 @@ const ContactPage = () => {
             <StyledInput
               type="text"
               onChange={(e) => handleChange(e)}
-              placeholder="name"
+              placeholder="Name"
               name="from"
             />
           </StyledLabel>
@@ -57,14 +61,15 @@ const ContactPage = () => {
             />
           </StyledLabel>
           <StyledLabel>
-            <StyledIcon icon={["fas", "comment"]} />
+            <StyledIcon icon={["fas", "comment"]} textarea/>
             <StyledTextArea
               type="text"
               name="message"
+              placeholder="Message..."
               onChange={(e) => handleChange(e)}
             />
           </StyledLabel>
-          <Button width="150px" height="30px">
+          <Button width="150px" height="30px" type="submit" onClick={(e) => handleSubmit(e)}>
             Send
           </Button>
         </StyledForm>
