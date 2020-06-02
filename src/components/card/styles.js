@@ -44,6 +44,7 @@ export const CardWrapper = styled.div`
   margin: 10px auto;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
   &:hover {
     transform: scale(1.05);
     ${CardImage} {
@@ -54,5 +55,6 @@ export const CardWrapper = styled.div`
 
   @media screen and (min-width: 600px) {
     width: 400px;
+    margin: 10px;
   }
 `;

@@ -43,8 +43,7 @@ const AppWrapper = styled.div`
   @media screen and (min-width: 600px) {
     grid-template-columns: 100px 1fr;
     grid-template-rows: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
   }
 `;
 

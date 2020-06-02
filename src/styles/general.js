@@ -6,10 +6,13 @@ export const PageWrapper = styled.div`
   height: calc(100vh - 60px);
   overflow-y: auto;
   @media screen and (min-width: 600px) {
+    height: 100vh;
+
   }
   @media screen and (min-width: 1000px) {
+    overflow: hidden;
     grid-template-columns: ${(props) => props.columns || "1.5fr 1fr"};
-    grid-template-columns: ${(props) => props.single && "1fr"};
+    grid-template-columns: ${(props) => props.single && "auto"};
     grid-template-rows: ${(props) => props.rows || "1fr"};
   }
 `;
@@ -70,14 +73,21 @@ export const Button = styled.button`
 
 export const VerticalHeader = styled.h2`
   display: none;
-  font-size: ${(props) => props.fontSize || "initial"};
-  color: ${(props) => props.theme.color};
-  text-decoration: underline;
-  margin: 0;
-  writing-mode: vertical-lr;
-  align-self: flex-start;
-  margin-top: 8vh;
-  @media screen and (min-width: 600px) {
-    display: initial;
+
+  @media screen and (min-width: 1120px) {
+    display: block;
+    width: min-content;
+    height: min-content;
+    font-size: ${(props) => props.fontSize || "initial"};
+    color: ${(props) => props.theme.color};
+    text-decoration: underline;
+    margin: 0;  
+    transform: ${props => props.right && "rotate(90deg)"};
+    transform: ${props => props.left && "rotate(270deg)"};
+    transform-origin: ${props => props.right && "center"};
+    transform-origin: ${props => props.left && "center"};
+    margin-top: ${props => props.top && "30px"};
+    margin-bottom: ${props => props.bottom && "30px"};
+    align-self: ${props => props.bottom && "flex-end"};
   }
 `;

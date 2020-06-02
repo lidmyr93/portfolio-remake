@@ -33,17 +33,24 @@ const HomePage = () => {
     <TransitionWrapper className="page">
       <PageWrapper single>
         <FlexWrapper>
-          <Grid
-            columns="auto auto"
-            rows="auto auto"
-            width="auto"
-            height="min-content"
-          >
-            {content.map((card) => (
-              <Card content={card} />
-            ))}
+          <Grid columns="auto auto auto" rows="auto">
+            <VerticalHeader fontSize="2rem" left bottom alignSelf="flex-end">
+              Hello
+            </VerticalHeader>
+            <Grid
+              columns="auto auto"
+              rows="auto auto"
+              width="auto"
+              height="min-content"
+            >
+              {content.map((card) => (
+                <Card content={card} />
+              ))}
+            </Grid>
+            <VerticalHeader fontSize="2rem" right top alignSelf="flex-start">
+              Latest Projects
+            </VerticalHeader>
           </Grid>
-          <VerticalHeader fontSize="2rem">Latest Projects</VerticalHeader>
         </FlexWrapper>
       </PageWrapper>
     </TransitionWrapper>
