@@ -4,10 +4,10 @@ import { CardWrapper, CardImage, CardTitle, CardText } from "./styles";
 import { FlexWrapper } from "../../styles/general";
 import { Markdown } from "../markdown/Markdown";
 
-const Card = ({ content }) => {
-  console.log(content.fields);
+const Card = ({ content, onClick }) => {
+  
   return (
-    <CardWrapper>
+    <CardWrapper onClick={() => onClick(content)}>
       <CardImage
         background={`https:${content.fields.picture.fields.file.url}?w=400&h=300`}
       />

@@ -20,6 +20,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import ContactPage from "./components/pages/contact/Contact";
 import ProjectsPage from "./components/pages/projects/Projects";
+import { ModalContextProvider } from "./components/modal/ModalContext";
+import ModalManager from "./components/modal/ModalController";
 library.add(
   faHome,
   faMale,
@@ -57,33 +59,36 @@ export default function App() {
   return (
     <ThemeProvider theme={localTheme}>
       <ContentfulProvider client={contentfulClient}>
-        <Router>
-          <AppWrapper>
-            <Menu />
-            <Route
-              render={({ location }) => {
-                return (
-                  <div>
-                    <TransitionGroup component={null}>
-                      <CSSTransition
-                        timeout={1000}
-                        classNames="page"
-                        key={location.key}
-                      >
-                        <Switch location={location}>
-                          <Route exact path="/" component={HomePage} />
-                          <Route path="/about" component={AboutPage} />
-                          <Route path="/contact" component={ContactPage} />
-                          <Route path="/projects" component={ProjectsPage} />
-                        </Switch>
-                      </CSSTransition>
-                    </TransitionGroup>
-                  </div>
-                );
-              }}
-            />
-          </AppWrapper>
-        </Router>
+        <ModalContextProvider>
+          <ModalManager />
+          <Router>
+            <AppWrapper>
+              <Menu />
+              <Route
+                render={({ location }) => {
+                  return (
+                    <div>
+                      <TransitionGroup component={null}>
+                        <CSSTransition
+                          timeout={1000}
+                          classNames="page"
+                          key={location.key}
+                        >
+                          <Switch location={location}>
+                            <Route exact path="/" component={HomePage} />
+                            <Route path="/about" component={AboutPage} />
+                            <Route path="/contact" component={ContactPage} />
+                            <Route path="/projects" component={ProjectsPage} />
+                          </Switch>
+                        </CSSTransition>
+                      </TransitionGroup>
+                    </div>
+                  );
+                }}
+              />
+            </AppWrapper>
+          </Router>
+        </ModalContextProvider>
       </ContentfulProvider>
     </ThemeProvider>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useContentful } from "react-contentful";
 import {
   PageWrapper,
@@ -11,8 +11,11 @@ import {
 import { TransitionWrapper } from "../../../styles/page-transition/index";
 import { Markdown } from "../../markdown/Markdown";
 import Card from "../../card/Card";
+import { ModalContext } from "../../modal/ModalContext";
 
 const HomePage = () => {
+  const { setCurrentModal } = useContext(ModalContext);
+
   const { data, error, fetched, loading } = useContentful({
     contentType: "projects",
     query: {
@@ -26,8 +29,10 @@ const HomePage = () => {
     console.error(error);
     return null;
   }
-
   const content = data.items;
+  const openModal = (projectData) => {
+    setCurrentModal({type: 'ProjectModal', data : projectData});
+  }
 
   return (
     <TransitionWrapper className="page">
@@ -44,7 +49,7 @@ const HomePage = () => {
               height="min-content"
             >
               {content.map((card) => (
-                <Card content={card} />
+                <Card content={card} onClick={openModal}/>
               ))}
             </Grid>
             <VerticalHeader fontSize="2rem" right top alignSelf="flex-start">
