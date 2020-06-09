@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useContext, useRef, useEffect, useState } from "react";
 
 import { MenuWrapper, LinkWrapper, Social, StyledSvg, SvgLink } from "./styles";
 import IconLink from "../icon-link/IconLink";
+import { ModalContext } from "../modal/ModalContext";
 
 const Menu = () => {
+  const { setCurrentModal } = useContext(ModalContext);
+  const [placement, setPlacement] = useState(null);
+  const placementRef = useRef(null);
+
+  useEffect(() => {
+    if (placementRef.current) {
+      setPlacement({
+        width: placementRef.current.offsetWidth,
+        height: placementRef.current.offsetHeight,
+        left: placementRef.current.offsetLeft,
+        top: placementRef.current.offsetTop,
+      });
+    }
+    return null;
+  }, [placementRef]);
+  const openModal = () => {
+    setCurrentModal({ type: "DownloadModal", data: placement });
+  };
   return (
     <MenuWrapper>
       <SvgLink to="/">
@@ -29,6 +48,9 @@ const Menu = () => {
           />
         </StyledSvg>
       </SvgLink>
+      <div onClick={openModal} ref={placementRef}>
+        down
+      </div>
       <LinkWrapper>
         <IconLink text="Home" to="/" icon={["fas", "home"]} height="50px" />
         <IconLink

@@ -1,28 +1,27 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ScrollBar = css`
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
 
-::-webkit-scrollbar {
--webkit-appearance: none;
-}
+  ::-webkit-scrollbar:vertical {
+    width: 10px;
+  }
 
-::-webkit-scrollbar:vertical {
-width: 10px;
-}
+  ::-webkit-scrollbar:horizontal {
+    height: 12px;
+  }
 
-::-webkit-scrollbar:horizontal {
-height: 12px;
-}
+  ::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.menuText};
+    border-radius: 0px;
+  }
 
-::-webkit-scrollbar-thumb {
-background-color: ${props => props.theme.menuText};
-border-radius: 0px;
-}
-
-::-webkit-scrollbar-track {
-border-radius: 0px;
-background-color: transparent;
-}
+  ::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: transparent;
+  }
 `;
 
 export const PageWrapper = styled.div`
@@ -33,7 +32,6 @@ export const PageWrapper = styled.div`
   ${ScrollBar};
   @media screen and (min-width: 600px) {
     height: 100vh;
-
   }
   @media screen and (min-width: 1000px) {
     overflow: hidden;
@@ -90,12 +88,12 @@ export const Button = styled.button`
   border-radius: ${(props) => props.borderRadius || "25px"};
   border: ${(props) => props.border || "none"};
   background: ${(props) => props.background || props.theme.menuText};
-  font-weight: ${props => props.fontWeight || "700"};
-  color: ${props => props.color || props.theme.color};
-  font-size: ${props => props.fontSize || "1.25rem"};
+  font-weight: ${(props) => props.fontWeight || "700"};
+  color: ${(props) => props.color || props.theme.color};
+  font-size: ${(props) => props.fontSize || "1.25rem"};
   cursor: pointer;
   &:hover {
-    box-shadow: 0 0 1.5em ${props => props.hoverColor || props.theme.color};
+    box-shadow: 0 0 1.5em ${(props) => props.hoverColor || props.theme.color};
   }
 `;
 
@@ -109,15 +107,14 @@ export const VerticalHeader = styled.h2`
     font-size: ${(props) => props.fontSize || "initial"};
     color: ${(props) => props.theme.color};
     text-decoration: underline;
-    margin: 0;  
-    transform: ${props => props.right && "rotate(90deg)"};
-    transform: ${props => props.left && "rotate(270deg)"};
-    transform-origin: ${props => props.right && "center"};
-    transform-origin: ${props => props.left && "center"};
-    margin-top: ${props => props.top && "30px"};
-    margin-bottom: ${props => props.bottom && "30px"};
-    align-self: ${props => props.bottom && "flex-end"};
+    margin: 0;
+    transform: ${(props) => props.right && "rotate(90deg)"};
+    transform: ${(props) => props.left && "rotate(270deg)"};
+    transform-origin: ${(props) => props.right && "center"};
+    transform-origin: ${(props) => props.left && "center"};
+    margin-top: ${(props) => props.top && "30px"};
+    margin-bottom: ${(props) => props.bottom && "30px"};
+    align-self: ${(props) => props.bottom && "flex-end"};
+    justify-self: ${(props) => props.bottom && "flex-end"};
   }
 `;
-
-

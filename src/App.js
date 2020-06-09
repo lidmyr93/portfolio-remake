@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import HomePage from "./components/pages/home/Home";
 import AboutPage from "./components/pages/about/About";
 import Menu from "./components/menu/Menu";
@@ -48,7 +48,12 @@ const AppWrapper = styled.div`
     overflow: hidden;
   }
 `;
-
+const GlobalStyle = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+  }
+`;
 const contentfulClient = new ContentfulClient({
   accessToken: "rEfxUOCakqjgvhGSYtGs6ONNU1OoSMj82Z9QtbRPxxM",
   space: "nj3jg45os9hx",
@@ -59,6 +64,7 @@ export default function App() {
   return (
     <ThemeProvider theme={localTheme}>
       <ContentfulProvider client={contentfulClient}>
+        <GlobalStyle />
         <ModalContextProvider>
           <ModalManager />
           <Router>
