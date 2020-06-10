@@ -1,4 +1,4 @@
-import React, { useReducer , useState} from "react";
+import React, { useReducer, useState } from "react";
 import { PageWrapper, FlexWrapper, Button } from "../../../styles/general";
 import axios from "axios";
 import {
@@ -25,29 +25,25 @@ const ContactPage = () => {
     const { name, value } = e.target;
     setEmailData({ [name]: value });
   };
-  
-  const handleSubmit = e => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const url = "https://europe-west1-portfolio-remake.cloudfunctions.net/submitEurope";
+    const url =
+      "https://europe-west1-portfolio-remake.cloudfunctions.net/submitEurope";
     axios
-      .post(
-        url,
-        emailData
-      )
-      .then(res => {
-        console.log(res);
+      .post(url, emailData)
+      .then((res) => {
         if (res.status === 200) {
           return setMailSent(true);
-          
         } else {
           throw new Error("Something went wrong with the email service");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   };
-  
+
   return (
     <PageWrapper single>
       <FlexWrapper>
@@ -81,7 +77,7 @@ const ContactPage = () => {
             />
           </StyledLabel>
           <StyledLabel>
-            <StyledIcon icon={["fas", "comment"]} textarea/>
+            <StyledIcon icon={["fas", "comment"]} textarea />
             <StyledTextArea
               type="text"
               name="message"
@@ -89,7 +85,12 @@ const ContactPage = () => {
               onChange={(e) => handleChange(e)}
             />
           </StyledLabel>
-          <Button width="150px" height="30px" type="submit" onClick={(e) => handleSubmit(e)}>
+          <Button
+            width="150px"
+            height="30px"
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
             Send
           </Button>
         </StyledForm>

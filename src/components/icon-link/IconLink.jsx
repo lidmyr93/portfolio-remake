@@ -12,11 +12,11 @@ const StyledIcon = styled(FontAwesomeIcon)`
   font-size: 1.25rem;
 `;
 const linkcss = css`
-   margin: ${(props) => props.theme.marginSm};
+  margin: ${(props) => props.theme.marginSm};
   color: ${(props) => props.theme.menuText};
   text-decoration: none;
   cursor: pointer;
-  ${(props) => console.log(props.height)}
+
   height: ${(props) => props.height || "auto"};
   display: flex;
   align-items: center;

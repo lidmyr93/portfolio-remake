@@ -35,6 +35,7 @@ export const PageWrapper = styled.div`
   }
   @media screen and (min-width: 1000px) {
     overflow: hidden;
+    overflow-y: ${(props) => props.overflowY || "hidden"};
     grid-template-columns: ${(props) => props.columns || "1.5fr 1fr"};
     grid-template-columns: ${(props) => props.single && "auto"};
     grid-template-rows: ${(props) => props.rows || "1fr"};

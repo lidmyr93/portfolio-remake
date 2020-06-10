@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useContentful } from "react-contentful";
 import { TransitionWrapper } from "../../../styles/page-transition/index";
 import {
@@ -6,10 +6,18 @@ import {
   ContentWrapper,
   FlexWrapper,
   TextBlock,
+  ScrollBar,
 } from "../../../styles/general";
 import { Markdown } from "../../markdown/Markdown";
+import { GridContainer, Item } from "./styles";
+import { shuffleArray } from "../../../Utils/shuffle";
+import { ModalContext } from "../../modal/ModalContext";
 
 const ProjectsPage = () => {
+  const { setCurrentModal } = useContext(ModalContext);
+  const openModal = (projectData) => {
+    setCurrentModal({ type: "ProjectModal", data: projectData });
+  };
   const { data, error, fetched, loading } = useContentful({
     contentType: "projects",
   });
@@ -23,11 +31,23 @@ const ProjectsPage = () => {
   if (!data) {
     return <p>Page does not exist</p>;
   }
-  console.log(data);
+
   return (
     <TransitionWrapper>
-      <PageWrapper>
-        <h1>projects</h1>
+      <PageWrapper single overflowY="auto">
+        <FlexWrapper>
+          <GridContainer>
+            {data.items.map((item) => (
+              <Item
+                weight={item.fields.weight}
+                background={`https:${item.fields.picture.fields.file.url}`}
+                className={item.fields.weight === 1 ? "medium" : "big"}
+                size={item.fields.weight}
+                onClick={() => openModal(item.fields)}
+              />
+            ))}
+          </GridContainer>
+        </FlexWrapper>
       </PageWrapper>
     </TransitionWrapper>
   );

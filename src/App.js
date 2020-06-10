@@ -58,7 +58,6 @@ const contentfulClient = new ContentfulClient({
   accessToken: "rEfxUOCakqjgvhGSYtGs6ONNU1OoSMj82Z9QtbRPxxM",
   space: "nj3jg45os9hx",
 });
-console.log(breakpoints);
 
 export default function App() {
   return (

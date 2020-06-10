@@ -12,7 +12,6 @@ const Test = styled.div`
   flex-direction: column;
 `;
 export const DownloadModal = ({ closeModal, data }) => {
-  console.log(data);
   return (
     <Test
       height={data.height}
@@ -21,7 +20,6 @@ export const DownloadModal = ({ closeModal, data }) => {
       offsetLeft={data.left}
       onClick={(e) => {
         e.stopPropagation();
-        console.log("close");
       }}
     >
       <p onClick={closeModal}>X</p>

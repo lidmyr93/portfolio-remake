@@ -31,8 +31,8 @@ const HomePage = () => {
   }
   const content = data.items;
   const openModal = (projectData) => {
-    setCurrentModal({type: 'ProjectModal', data : projectData});
-  }
+    setCurrentModal({ type: "ProjectModal", data: projectData });
+  };
 
   return (
     <TransitionWrapper className="page">
@@ -49,7 +49,7 @@ const HomePage = () => {
               height="min-content"
             >
               {content.map((card) => (
-                <Card content={card} onClick={openModal}/>
+                <Card content={card} onClick={openModal} />
               ))}
             </Grid>
             <VerticalHeader fontSize="2rem" right top alignSelf="flex-start">

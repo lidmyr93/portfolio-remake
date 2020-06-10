@@ -5,9 +5,8 @@ import { FlexWrapper } from "../../styles/general";
 import { Markdown } from "../markdown/Markdown";
 
 const Card = ({ content, onClick }) => {
-  
   return (
-    <CardWrapper onClick={() => onClick(content)}>
+    <CardWrapper onClick={() => onClick(content.fields)}>
       <CardImage
         background={`https:${content.fields.picture.fields.file.url}?w=400&h=300`}
       />
