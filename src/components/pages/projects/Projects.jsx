@@ -6,17 +6,19 @@ import { PageWrapper, FlexWrapper } from "../../../styles/general";
 import { GridContainer, Item } from "./styles";
 import { ModalContext } from "../../modal/ModalContext";
 import { optimizeContentfulImage } from "../../../Utils/contentfulImage";
+import Spinner from "../../loading/Loading";
 
 const ProjectsPage = () => {
   const { setCurrentModal } = useContext(ModalContext);
   const openModal = (projectData) => {
     setCurrentModal({ type: "ProjectModal", data: projectData });
   };
-  const { data, error, fetched, loading } = useContentful({
+  const { data, error, fetched, loading} = useContentful({
     contentType: "projects",
   });
+  
   if (loading || !fetched) {
-    return null;
+    return <Spinner />;
   }
   if (error) {
     console.error(error);

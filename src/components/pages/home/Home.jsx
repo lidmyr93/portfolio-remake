@@ -1,17 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect} from "react";
 import { useContentful } from "react-contentful";
 import {
   PageWrapper,
-  ContentWrapper,
   FlexWrapper,
-  FlexWrap,
   Grid,
   VerticalHeader,
 } from "../../../styles/general";
 import { TransitionWrapper } from "../../../styles/page-transition/index";
-import { Markdown } from "../../markdown/Markdown";
+
 import Card from "../../card/Card";
 import { ModalContext } from "../../modal/ModalContext";
+import Spinner from "../../loading/Loading";
 
 const HomePage = () => {
   const { setCurrentModal } = useContext(ModalContext);
@@ -29,7 +28,7 @@ const HomePage = () => {
     }
     }, [data]) */
   if (loading || !fetched) {
-    return null;
+    return <Spinner />;
   }
   if (error) {
     console.error(error);

@@ -47,7 +47,7 @@ export const Links = styled.div`
   transform: scale(
     ${({ state }) => (state === "entering" || state === "entered" ? 0.2 : 1)}
   );
-  pointer-events: ${props => !props.menuOpen ? "none" : "false"};
+  pointer-events: ${props => !props.menuOpen ? "none" : "initial"};
 `;
 export const StyledLink = styled(Link)`
   font-size: 1rem;
