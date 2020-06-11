@@ -16,7 +16,7 @@ const MobileMenu = () => {
     <Transition in={menuOpen}>
       {(state) => (
         <MenuWrapper state={state} onClick={handleClick}>
-          <Links state={state}>
+          <Links state={state} menuOpen={menuOpen}>
             <StyledLink to="/">Home</StyledLink>
             <StyledLink to="/about">About</StyledLink>
             <StyledLink to="/contact">Contact</StyledLink>

@@ -37,13 +37,14 @@ export const Links = styled.div`
   z-index: 3;
   display: flex;
   flex-direction: column;
-  top: -40px;
+  top: -35px;
   right: 0px;
   opacity: ${({ state }) =>
     state === "entering" || state === "entered" ? 1 : 0};
   transform: scale(
     ${({ state }) => (state === "entering" || state === "entered" ? 0.2 : 1)}
   );
+  pointer-events: ${props => !props.menuOpen ? "none" : "false"};
 `;
 export const StyledLink = styled(Link)`
   font-size: 1rem;
