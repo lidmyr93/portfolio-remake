@@ -13,7 +13,7 @@ export const MenuWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
   z-index: 10;
