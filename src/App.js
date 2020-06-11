@@ -17,11 +17,13 @@ import {
   faSignature,
   faPhone,
   faComment,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import ContactPage from "./components/pages/contact/Contact";
 import ProjectsPage from "./components/pages/projects/Projects";
 import { ModalContextProvider } from "./components/modal/ModalContext";
 import ModalManager from "./components/modal/ModalController";
+import MobileMenu from "./components/menu/MobileMenu";
 library.add(
   faHome,
   faMale,
@@ -31,7 +33,8 @@ library.add(
   faGithub,
   faSignature,
   faPhone,
-  faComment
+  faComment,
+  faBars
 );
 
 const AppWrapper = styled.div`
@@ -40,8 +43,9 @@ const AppWrapper = styled.div`
   max-width: 100vw;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto 60px;
-  overflow-y: hidden;
+  grid-template-rows: auto;
+  overflow: hidden;
+  position: relative;
   @media screen and (min-width: 600px) {
     grid-template-columns: 100px 1fr;
     grid-template-rows: 100%;
@@ -69,6 +73,7 @@ export default function App() {
           <Router>
             <AppWrapper>
               <Menu />
+              <MobileMenu />
               <Route
                 render={({ location }) => {
                   return (

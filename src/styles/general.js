@@ -27,7 +27,7 @@ export const ScrollBar = css`
 export const PageWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  height: calc(100vh - 60px);
+  height: 100vh;
   overflow-y: auto;
   ${ScrollBar};
   @media screen and (min-width: 600px) {

@@ -1,17 +1,17 @@
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 export const MenuWrapper = styled.div`
-  order: 2;
-  width: 100%;
-  background: ${(props) => props.theme.backgroundDark};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: ${(props) => props.theme.menuText};
+  display: none;
+
   @media screen and (min-width: 600px) {
-    order: 0;
-    padding: ${(props) => `${props.theme.paddingMe} 0`};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-direction: column;
+    width: 100%;
+    padding: ${(props) => `${props.theme.paddingMe} 0`};
+    background: ${(props) => props.theme.backgroundDark};
+    color: ${(props) => props.theme.menuText};
   }
 
   @media screen and (min-width: 1000px) {
