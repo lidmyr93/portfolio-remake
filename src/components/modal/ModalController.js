@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useCallback, useEffect } from "react";
 import { ProjectModal } from "./modals/ProjectModal";
 import { DownloadModal } from "./modals/DownloadModal";
 import styled from "styled-components";
@@ -27,7 +27,11 @@ const ModalManager = (props) => {
 
     return (
       <ModalView>
-        <ModalComponent closeModal={closeModal} data={currentModal.data} />
+        <ModalComponent
+          closeModal={closeModal}
+          data={currentModal.data}
+          
+        />
       </ModalView>
     );
   }

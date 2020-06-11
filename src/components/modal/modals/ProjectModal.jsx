@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 const ModalWrapper = styled.div`
@@ -9,17 +9,35 @@ const ModalWrapper = styled.div`
 `;
 
 export const ProjectModal = ({ closeModal, data }) => {
-  console.log("modal", data);
-  /* 
-    github,
-    picture,
-    project,
-    text,
-    title,
-    webpage,
-  */
+  const ref = useRef(null);
+  
+  const escapeListener = useCallback((e) => {
+    if (e.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  const clickListener = useCallback(
+    (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        closeModal();
+      }
+    },
+    []
+  );
+  
+  useEffect(() => {
+    document.addEventListener("click", clickListener);
+    document.addEventListener("keyup", escapeListener);
+
+    return () => {
+      document.removeEventListener("click", clickListener);
+      document.removeEventListener("keyup", escapeListener);
+    };
+  });
+
   return (
-    <ModalWrapper>
+    <ModalWrapper ref={ref}>
       <p onClick={closeModal}>X</p>
       <h1>{data.title}</h1>
       <p>{data.text}</p>

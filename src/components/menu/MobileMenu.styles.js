@@ -21,6 +21,9 @@ export const MenuWrapper = styled.div`
   transform: scale(
     ${({ state }) => (state === "entering" || state === "entered" ? 10 : 1)}
   );
+  @media screen and (min-width:600px){
+    display:none;
+  }
 `;
 
 export const BurgerIcon = styled(FontAwesomeIcon)`
