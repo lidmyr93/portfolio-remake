@@ -1,12 +1,10 @@
-import React, { useContext, useRef, useCallback, useEffect } from "react";
+import React, { useContext } from "react";
 import { ProjectModal } from "./modals/ProjectModal";
-import { DownloadModal } from "./modals/DownloadModal";
 import styled from "styled-components";
 import { ModalContext } from "./ModalContext";
 
 const Modals = {
   ProjectModal,
-  DownloadModal,
 };
 const ModalView = styled.div`
   height: 100vh;
@@ -21,7 +19,7 @@ const ModalView = styled.div`
 const ModalManager = (props) => {
   const { currentModal, setCurrentModal } = useContext(ModalContext);
   const closeModal = () => setCurrentModal(null);
-
+  
   if (currentModal) {
     const ModalComponent = Modals[currentModal.type];
 

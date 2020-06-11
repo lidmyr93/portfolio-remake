@@ -13,7 +13,7 @@ const MobileMenu = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <Transition in={menuOpen}>
+    <Transition in={menuOpen} timeout={100}>
       {(state) => (
         <MenuWrapper state={state} onClick={handleClick}>
           <Links state={state} menuOpen={menuOpen}>

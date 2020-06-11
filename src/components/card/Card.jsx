@@ -3,12 +3,13 @@ import React from "react";
 import { CardWrapper, CardImage, CardTitle, CardText } from "./styles";
 import { FlexWrapper } from "../../styles/general";
 import { Markdown } from "../markdown/Markdown";
+import { optimizeContentfulImage } from "../../Utils/contentfulImage";
 
 const Card = ({ content, onClick }) => {
   return (
     <CardWrapper onClick={() => onClick(content.fields)}>
       <CardImage
-        background={`https:${content.fields.picture.fields.file.url}?w=400&h=300`}
+        background={optimizeContentfulImage(content.fields.picture.fields.file.url, 400, 200)}
       />
 
       <FlexWrapper column justify="flex-start" style={{ height: "60%" }}>

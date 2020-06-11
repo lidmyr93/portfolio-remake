@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useContentful } from "react-contentful";
 import {
   PageWrapper,
@@ -22,6 +22,12 @@ const HomePage = () => {
       limit: 4,
     },
   });
+  //Opens up modal for styling
+  /* useEffect(() => {
+    if(data){
+      setCurrentModal({type: "ProjectModal", data : data.items[0].fields});
+    }
+    }, [data]) */
   if (loading || !fetched) {
     return null;
   }
@@ -30,6 +36,7 @@ const HomePage = () => {
     return null;
   }
   const content = data.items;
+  
   const openModal = (projectData) => {
     setCurrentModal({ type: "ProjectModal", data: projectData });
   };
