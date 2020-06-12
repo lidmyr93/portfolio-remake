@@ -9,6 +9,15 @@ export const ModalWrapper = styled.div`
   width: 90vw;
   position: relative;
   border-radius: 10px;
+
+  @media screen and (min-width: 600px){
+    width: 60vw;
+  }
+
+  @media screen and (min-width: 1100px){
+    width: 50%;
+    max-width: 800px;
+  }
 `;
 
 export const CloseModalButton = styled.div`
@@ -20,6 +29,10 @@ export const CloseModalButton = styled.div`
   top: 5px;
   &:hover {
     transform: scale(1.2);
+  }
+  @media screen and (min-width: 1100px){
+    top: 10px;
+    right: 10px;
   }
 `;
 
@@ -41,10 +54,21 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 5px 0 5px 5px;
+  @media screen and (min-width: 1100px){
+    padding: 10px 0 10px 10px;
+  }
 `;
 
 export const TextWrapper = styled.div`
   padding-bottom: 20px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-font-smoothing: antialiased !important;
+  text-rendering: optimizelegibility !important;
+  letter-spacing: .03em;
+  @media screen and (min-width: 1100px){
+    width: 60%;
+  }
 `;
 export const StyledExternalLink = styled.a`
   color: black;
@@ -65,8 +89,19 @@ export const StyledExternalLink = styled.a`
 
 export const LowerProjectWrapper = styled.div`
   padding: 20px 10px;
+
+  @media screen and (min-width: 1100px){
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-evenly;
+  }
 `;
 
 export const LinkWrapper = styled.div`
+    width: 50%;
     display:flex;
+    justify-content: space-evenly;
+    @media screen and (min-width: 1100px){
+      flex-direction: column;
+  }
 `;
