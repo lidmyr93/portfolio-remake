@@ -21,12 +21,7 @@ const HomePage = () => {
       limit: 4,
     },
   });
-  //Opens up modal for styling
-  useEffect(() => {
-    if(data){
-      setCurrentModal({type: "ProjectModal", data : data.items[2].fields});
-    }
-    }, [data])
+ 
   if (loading || !fetched) {
     return <Spinner />;
   }

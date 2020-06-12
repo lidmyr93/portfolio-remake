@@ -11,12 +11,14 @@ import { Markdown } from "../../markdown/Markdown";
 import { MarkdownList, FloatingHeader, Portrait } from "./styles";
 import Slider from "../../slider/Slider";
 import { SliderImage } from "../../slider/styles";
+import Spinner from "../../loading/Loading";
+import { optimizeContentfulImage } from "../../../Utils/contentfulImage";
 const AboutPage = () => {
   const { data, error, fetched, loading } = useContentful({
     contentType: "about",
   });
   if (loading || !fetched) {
-    return null;
+    return <Spinner />;
   }
   if (error) {
     console.error(error);
@@ -48,7 +50,7 @@ const AboutPage = () => {
         <Slider>
           {content.sliderImages.fields.images.map((image) => (
             <div style={{ position: "relative" }} key={image.fields.title}>
-              <SliderImage background={`https:${image.fields.file.url}`} />
+              <SliderImage background={optimizeContentfulImage(image.fields.file.url, 1440, 1000)} />
               <FloatingHeader>{image.fields.description}</FloatingHeader>
             </div>
           ))}
