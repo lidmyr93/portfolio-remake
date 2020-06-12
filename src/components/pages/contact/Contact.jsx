@@ -8,6 +8,7 @@ import {
   StyledIcon,
   StyledTextArea,
 } from "./styles";
+import { MailStatus } from "./mailstatus";
 
 const ContactPage = () => {
   const [emailData, setEmailData] = useReducer(
@@ -26,22 +27,29 @@ const ContactPage = () => {
     setEmailData({ [name]: value });
   };
 
+  const clearWhenEmailSuccess = () => {
+    setEmailData({...emailData, from: "", message: "", email: "", number:""});
+    setMailSent(false);
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
+    setMailSent("pending");
     const url =
       "https://europe-west1-portfolio-remake.cloudfunctions.net/submitEurope";
-    axios
+     axios
       .post(url, emailData)
       .then((res) => {
         if (res.status === 200) {
-          return setMailSent(true);
+          return setMailSent("success");
         } else {
+          setMailSent("failure");
           throw new Error("Something went wrong with the email service");
         }
       })
       .catch((error) => {
         console.error(error);
       });
+  
   };
 
   return (
@@ -85,14 +93,17 @@ const ContactPage = () => {
               onChange={(e) => handleChange(e)}
             />
           </StyledLabel>
+          
           <Button
             width="150px"
             height="30px"
             type="submit"
             onClick={(e) => handleSubmit(e)}
-          >
+            >
             Send
           </Button>
+          {mailSent && <MailStatus status={mailSent} clearWhenEmailSuccess={clearWhenEmailSuccess}/>}
+            
         </StyledForm>
       </FlexWrapper>
     </PageWrapper>

@@ -18,6 +18,8 @@ import {
   faPhone,
   faComment,
   faBars,
+  faCheckCircle,
+  faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import ContactPage from "./components/pages/contact/Contact";
 import ProjectsPage from "./components/pages/projects/Projects";
@@ -34,7 +36,9 @@ library.add(
   faSignature,
   faPhone,
   faComment,
-  faBars
+  faBars,
+  faCheckCircle,
+  faExclamationTriangle
 );
 
 const AppWrapper = styled.div`

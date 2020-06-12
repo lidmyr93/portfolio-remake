@@ -13,6 +13,7 @@ export const StyledForm = styled.form`
   width: 300px;
   padding: 1rem 0.5rem;
   margin: 0 auto;
+  position: relative;
   @media screen and (min-width: 450px){
     width: 350px;
     padding: 2rem 2rem;
