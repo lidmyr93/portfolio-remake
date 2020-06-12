@@ -22,11 +22,11 @@ const HomePage = () => {
     },
   });
   //Opens up modal for styling
-  /* useEffect(() => {
+  useEffect(() => {
     if(data){
-      setCurrentModal({type: "ProjectModal", data : data.items[0].fields});
+      setCurrentModal({type: "ProjectModal", data : data.items[2].fields});
     }
-    }, [data]) */
+    }, [data])
   if (loading || !fetched) {
     return <Spinner />;
   }

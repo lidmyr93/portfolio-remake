@@ -6,6 +6,7 @@ import { Markdown } from "../markdown/Markdown";
 import { optimizeContentfulImage } from "../../Utils/contentfulImage";
 
 const Card = ({ content, onClick }) => {
+  
   return (
     <CardWrapper onClick={() => onClick(content.fields)}>
       <CardImage
