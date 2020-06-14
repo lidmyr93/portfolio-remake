@@ -13,7 +13,7 @@ import {
 import { optimizeContentfulImage } from "../../../Utils/contentfulImage";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FlexWrap, FlexWrapper } from "../../../styles/general";
+import { FlexWrapper } from "../../../styles/general";
 
 export const ProjectModal = ({ closeModal, data }) => {
   const ref = useRef(null);

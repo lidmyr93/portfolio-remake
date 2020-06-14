@@ -27,6 +27,7 @@ export const CloseModalButton = styled.div`
   color: rgba(255, 255, 255, 0.8);
   right: 5px;
   top: 5px;
+  cursor: pointer;
   &:hover {
     transform: scale(1.2);
   }

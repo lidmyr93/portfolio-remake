@@ -75,12 +75,13 @@ export const FlexWrap = styled.div`
   align-items: inherit;
 `;
 export const TextBlock = styled.div`
-  width: 50%;
+  width: ${props => props.width || "50%"};
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased !important;
   -moz-font-smoothing: antialiased !important;
   text-rendering: optimizelegibility !important;
   letter-spacing: 0.03em;
+  color: ${props => props.color || "white"};
 `;
 
 export const Button = styled.button`
