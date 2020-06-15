@@ -24,14 +24,25 @@ export const StyledFigure = styled.div`
 export const Portrait = styled.img`
   width: 200px;
   height: auto;
-  align-self: flex-start;
-  float: left;
-  margin: 0 10px 0 0;
+  display: block;
+  margin: 0 auto 10px auto;
   box-shadow: -1px 1px 7px 2px rgba(0,0,0,0.75);
+  @media screen and (min-width: 600px){
+    float: left;
+    margin: 0 15px 0 0;
+  }
 `;
+export const SliderWrapper = styled.div`
+  display: none;
+    @media screen and (min-width: 1000px){
+      display: initial;
+    }
+  `;
+
 
 export const Paper = styled.div`
-  width: 600px;
+  max-width: 800px;
+  width: 90%;
   height: auto;
   position: relative;
   margin: 20px auto;
@@ -39,7 +50,6 @@ export const Paper = styled.div`
   padding-bottom: 40px;
   background: #fefabc linear-gradient(150deg,#efec88 0%,#fefabc 100%);
   box-shadow: 0px 0px 5px 0px #888;
-
   &::before {
     content: "";
     width: 2px;

@@ -17,8 +17,11 @@ import {
   PaperContent,
   PostIt,
   StyledFigure,
+  StyledSlider,
+  SliderWrapper,
 } from "./styles";
 import Slider from "../../slider/Slider";
+
 import { SliderImage } from "../../slider/styles";
 import Spinner from "../../loading/Loading";
 import { optimizeContentfulImage } from "../../../Utils/contentfulImage";
@@ -39,7 +42,7 @@ const AboutPage = () => {
   const content = data && data.items && data.items[0].fields;
   const randomPostItStyle = () => {
     const colors = ["#FBE364", "#F4B416", "#7afcff"];
-    const rotation = [4, -4 , 0];
+    const rotation = [4, -4, 0];
     const index = Math.floor(Math.random() * 3);
     let x = { color: colors[index], rotate: rotation[index] };
     return x;
@@ -48,21 +51,21 @@ const AboutPage = () => {
     <TransitionWrapper className="page">
       <PageWrapper>
         <ContentWrapper>
-          <FlexWrapper justify="space-evenly">
-            
+          
             <Paper>
               <Pattern>
                 <StyledFigure>
-                <Portrait
-              src={content.profilePicture.fields.file.url}
-              alt={content.profilePicture.fields.file.fileName}
-            />
-                <figcaption><PaperContent>{content.text}</PaperContent></figcaption>
-                
+                  <Portrait
+                    src={content.profilePicture.fields.file.url}
+                    alt={content.profilePicture.fields.file.fileName}
+                  />
+                  <figcaption>
+                    <PaperContent>{content.text}</PaperContent>
+                  </figcaption>
                 </StyledFigure>
               </Pattern>
             </Paper>
-          </FlexWrapper>
+          
 
           <MarkdownList>
             {content.skills.map((skill, i) => (
@@ -73,20 +76,22 @@ const AboutPage = () => {
             ))}
           </MarkdownList>
         </ContentWrapper>
-        <Slider>
-          {content.sliderImages.fields.images.map((image) => (
-            <div style={{ position: "relative" }} key={image.fields.title}>
-              <SliderImage
-                background={optimizeContentfulImage(
-                  image.fields.file.url,
-                  1440,
-                  1000
-                )}
-              />
-              <FloatingHeader>{image.fields.description}</FloatingHeader>
-            </div>
-          ))}
-        </Slider>
+        
+          <Slider>
+            {content.sliderImages.fields.images.map((image) => (
+              <div style={{ position: "relative" }} key={image.fields.title}>
+                <SliderImage
+                  background={optimizeContentfulImage(
+                    image.fields.file.url,
+                    1440,
+                    1000
+                  )}
+                />
+                <FloatingHeader>{image.fields.description}</FloatingHeader>
+              </div>
+            ))}
+          </Slider>
+        
       </PageWrapper>
     </TransitionWrapper>
   );

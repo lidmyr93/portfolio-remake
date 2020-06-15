@@ -33,7 +33,7 @@ export const PageWrapper = styled.div`
   @media screen and (min-width: 600px) {
     height: 100vh;
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 1100px) {
     overflow: hidden;
     overflow-y: ${(props) => props.overflowY || "hidden"};
     grid-template-columns: ${(props) => props.columns || "1.5fr 1fr"};
@@ -47,6 +47,8 @@ export const ContentWrapper = styled.div`
   justify-content: space-evenly;
   padding: 1rem;
   color: ${(props) => props.theme.color};
+  ${ScrollBar};
+  overflow-y: auto;
 `;
 export const Grid = styled.div`
   display: grid;
