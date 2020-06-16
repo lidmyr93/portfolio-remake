@@ -4,8 +4,6 @@ import { TransitionWrapper } from "../../../styles/page-transition/index";
 import {
   PageWrapper,
   ContentWrapper,
-  FlexWrapper,
-  TextBlock,
 } from "../../../styles/general";
 import { Markdown } from "../../markdown/Markdown";
 import {
@@ -17,8 +15,6 @@ import {
   PaperContent,
   PostIt,
   StyledFigure,
-  StyledSlider,
-  SliderWrapper,
 } from "./styles";
 import Slider from "../../slider/Slider";
 
@@ -51,21 +47,19 @@ const AboutPage = () => {
     <TransitionWrapper className="page">
       <PageWrapper>
         <ContentWrapper>
-          
-            <Paper>
-              <Pattern>
-                <StyledFigure>
-                  <Portrait
-                    src={content.profilePicture.fields.file.url}
-                    alt={content.profilePicture.fields.file.fileName}
-                  />
-                  <figcaption>
-                    <PaperContent>{content.text}</PaperContent>
-                  </figcaption>
-                </StyledFigure>
-              </Pattern>
-            </Paper>
-          
+          <Paper>
+            <Pattern>
+              <StyledFigure>
+                <Portrait
+                  src={content.profilePicture.fields.file.url}
+                  alt={content.profilePicture.fields.file.fileName}
+                />
+                <figcaption>
+                  <PaperContent>{content.text}</PaperContent>
+                </figcaption>
+              </StyledFigure>
+            </Pattern>
+          </Paper>
 
           <MarkdownList>
             {content.skills.map((skill, i) => (
@@ -76,22 +70,21 @@ const AboutPage = () => {
             ))}
           </MarkdownList>
         </ContentWrapper>
-        
-          <Slider>
-            {content.sliderImages.fields.images.map((image) => (
-              <div style={{ position: "relative" }} key={image.fields.title}>
-                <SliderImage
-                  background={optimizeContentfulImage(
-                    image.fields.file.url,
-                    1440,
-                    1000
-                  )}
-                />
-                <FloatingHeader>{image.fields.description}</FloatingHeader>
-              </div>
-            ))}
-          </Slider>
-        
+
+        <Slider>
+          {content.sliderImages.fields.images.map((image) => (
+            <div style={{ position: "relative" }} key={image.fields.title}>
+              <SliderImage
+                background={optimizeContentfulImage(
+                  image.fields.file.url,
+                  1440,
+                  1000
+                )}
+              />
+              <FloatingHeader>{image.fields.description}</FloatingHeader>
+            </div>
+          ))}
+        </Slider>
       </PageWrapper>
     </TransitionWrapper>
   );

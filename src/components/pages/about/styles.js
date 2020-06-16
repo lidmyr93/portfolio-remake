@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const MarkdownList = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -45,7 +46,8 @@ export const Paper = styled.div`
   width: 90%;
   height: auto;
   position: relative;
-  margin: 20px auto;
+  margin: 0 auto;
+  margin-bottom: 20px;
   padding-top: 40px;
   padding-bottom: 40px;
   background: #fefabc linear-gradient(150deg,#efec88 0%,#fefabc 100%);
