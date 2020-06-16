@@ -95,7 +95,8 @@ export const Button = styled.button`
   font-weight: ${(props) => props.fontWeight || "700"};
   color: ${(props) => props.color || props.theme.color};
   font-size: ${(props) => props.fontSize || "1.25rem"};
-  cursor: pointer;
+  cursor: ${props => !props.disabledStyle ? "not-allowed" : "pointer"};
+  filter: ${props => !props.disabledStyle && "blur(2px) grayscale(50%)"};
   &:hover {
     box-shadow: 0 0 1.5em ${(props) => props.hoverColor || props.theme.color};
   }

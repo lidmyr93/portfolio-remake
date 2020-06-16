@@ -50,7 +50,7 @@ const HomePage = () => {
               height="min-content"
             >
               {content.map((card) => (
-                <Card content={card} onClick={openModal} />
+                <Card content={card} onClick={openModal} key={card.fields.project}/>
               ))}
             </Grid>
             <VerticalHeader fontSize="2rem" right top alignSelf="flex-start">

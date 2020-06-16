@@ -14,7 +14,7 @@ export const StyledForm = styled.form`
   padding: 1rem 0.5rem;
   margin: 0 auto;
   position: relative;
-  @media screen and (min-width: 450px){
+  @media screen and (min-width: 450px) {
     width: 350px;
     padding: 2rem 2rem;
   }
@@ -30,6 +30,10 @@ export const StyledInput = styled.input`
   width: 100%;
   height: 2rem;
   padding-left: 2.5rem;
+  border: ${props => props.validation && "3px solid green"};
+  border: ${props => !props.validation && "3px solid red"};
+  ${props => console.log('validaiton',props.validation)};
+  border: ${props => (props.validation === undefined || props.validation === null) && "0px"};
   @media screen and (min-width: 450px) {
     padding-left: 1rem;
   }
@@ -50,20 +54,24 @@ export const StyledIcon = styled(FontAwesomeIcon)`
   position: absolute;
   left: 5px;
   align-self: center;
-  display: ${props => props.textarea && "none"};
+  display: ${(props) => props.textarea && "none"};
   @media screen and (min-width: 450px) {
-  left: -35px;
-  display: ${props => props.textarea && "initial"};
+    left: -35px;
+    display: ${(props) => props.textarea && "initial"};
   }
 `;
 
 export const StyledTextArea = styled.textarea`
-resize: none;
+  resize: none;
   width: 100%;
   height: 200px;
   padding: 0.5rem;
   overflow: auto;
   ${ScrollBar};
+  border: ${props => props.validation && "3px solid green"};
+  border: ${props => !props.validation && "3px solid red"};
+  ${props => console.log('validaiton',props.validation)};
+  border: ${props => (props.validation === undefined || props.validation === null) && "0px"};
   @media screen and (min-width: 600px) {
     padding: 1rem;
   }
