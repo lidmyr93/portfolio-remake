@@ -32,7 +32,6 @@ export const StyledInput = styled.input`
   padding-left: 2.5rem;
   border: ${props => props.validation && "3px solid green"};
   border: ${props => !props.validation && "3px solid red"};
-  ${props => console.log('validaiton',props.validation)};
   border: ${props => (props.validation === undefined || props.validation === null) && "0px"};
   @media screen and (min-width: 450px) {
     padding-left: 1rem;
@@ -70,7 +69,6 @@ export const StyledTextArea = styled.textarea`
   ${ScrollBar};
   border: ${props => props.validation && "3px solid green"};
   border: ${props => !props.validation && "3px solid red"};
-  ${props => console.log('validaiton',props.validation)};
   border: ${props => (props.validation === undefined || props.validation === null) && "0px"};
   @media screen and (min-width: 600px) {
     padding: 1rem;

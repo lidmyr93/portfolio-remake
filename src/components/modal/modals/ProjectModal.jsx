@@ -17,7 +17,6 @@ import { FlexWrapper } from "../../../styles/general";
 
 export const ProjectModal = ({ closeModal, data }) => {
   const ref = useRef(null);
-  console.log("test", data.fields);
   const escapeListener = useCallback(
     (e) => {
       if (e.key === "Escape") {

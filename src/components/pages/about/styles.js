@@ -90,7 +90,6 @@ export const PostIt = styled.div`
   justify-content: flex-start;
   align-items: center;
   background: ${props => props.randomstyle && props.randomstyle.color };
-  ${props => console.log(props.randomstyle)}
 
   transform: ${props => props.randomstyle && `rotate(${props.randomstyle.rotate}deg )`};
   &:hover {
