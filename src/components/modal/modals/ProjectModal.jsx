@@ -64,26 +64,50 @@ export const ProjectModal = ({ closeModal, data }) => {
       </HeaderWrapper>
 
       <LowerProjectWrapper>
-        <TextWrapper>
-          {data.text}
-        </TextWrapper>
+        <TextWrapper>{data.text}</TextWrapper>
 
-          <FlexWrapper >
-        <LinkWrapper>
-          <StyledExternalLink
-            href={data.webpage ? data.webpage : null}
-            target="blank"
-            >
-            <FontAwesomeIcon icon={["fas", "globe"]} />
-          </StyledExternalLink>
-          <StyledExternalLink
-            href={data.github ? data.github : null}
-            target="blank"
-            >
-            <FontAwesomeIcon icon={["fab", "github"]} />
-          </StyledExternalLink>
-        </LinkWrapper>
+        <FlexWrapper>
+          <LinkWrapper>
+            <FlexWrapper>
+              <StyledExternalLink
+                href={data.webpage ? data.webpage : null}
+                target="blank"
+              >
+                <FontAwesomeIcon icon={["fas", "globe"]} />
+              </StyledExternalLink>
+              {data.webpage ? (
+                <FontAwesomeIcon
+                  icon={["fas", "check-circle"]}
+                  style={{ color: "green", paddingLeft: "5px" }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={["fas", "exclamation-triangle"]}
+                  style={{ color: "red", paddingLeft: "5px" }}
+                />
+              )}
             </FlexWrapper>
+            <FlexWrapper>
+              <StyledExternalLink
+                href={data.github ? data.github : null}
+                target="blank"
+              >
+                <FontAwesomeIcon icon={["fab", "github"]} />
+              </StyledExternalLink>
+              {data.github ? (
+                <FontAwesomeIcon
+                  icon={["fas", "check-circle"]}
+                  style={{ color: "green", paddingLeft: "5px" }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={["fas", "exclamation-triangle"]}
+                  style={{ color: "red", paddingLeft: "5px" }}
+                />
+              )}
+            </FlexWrapper>
+          </LinkWrapper>
+        </FlexWrapper>
       </LowerProjectWrapper>
     </ModalWrapper>
   );

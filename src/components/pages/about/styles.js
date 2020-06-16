@@ -23,6 +23,7 @@ export const StyledFigure = styled.div`
   padding-right: 16px;
 `;
 export const Portrait = styled.img`
+max-width: 100%;
   width: 200px;
   height: auto;
   display: block;
@@ -80,12 +81,14 @@ export const PaperContent = styled.div`
 export const PostIt = styled.div`
   margin: 0.5rem;
   width: 170px;
-  height: 150px;
-  padding: 25px 15px;
+  height: 170px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
   display: inline-block;
   transition: all 0.3s ease;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   background: ${props => props.randomstyle && props.randomstyle.color };
   ${props => console.log(props.randomstyle)}
 
@@ -94,31 +97,8 @@ export const PostIt = styled.div`
     transform: scale(1.05);
   }
 
-  &::before {
-    content: "";
-    background-color: rgba(0, 0, 0, 0.00);
-    position: absolute;
-    width: 100%;
-    left: 0px;
-    top: 0;
-    height: 40px;
-    z-index: -1;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: -4px;
-    width: 100%;
-    height: 140px;
-    background-image: linear-gradient(173deg,
-      rgba(0, 0, 0, 0) 92%,
-      rgba(0, 0, 0, 0.4) 100%
-    ); 
-    transform: rotate(6deg);
-    z-index: -1;
-    filter: blur(2px);
-  }
+  
+  
 
    h1, p {
   font-family: 'Indie Flower', cursive;
