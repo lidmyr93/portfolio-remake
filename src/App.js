@@ -28,6 +28,7 @@ import ProjectsPage from "./components/pages/projects/Projects";
 import { ModalContextProvider } from "./components/modal/ModalContext";
 import ModalManager from "./components/modal/ModalController";
 import MobileMenu from "./components/menu/MobileMenu";
+require('dotenv').config();
 library.add(
   faHome,
   faMale,
@@ -67,8 +68,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 const contentfulClient = new ContentfulClient({
-  accessToken: "rEfxUOCakqjgvhGSYtGs6ONNU1OoSMj82Z9QtbRPxxM",
-  space: "nj3jg45os9hx",
+  accessToken: process.env.REACT_APP_CONTENTFUL_API_KEY,
+  space: process.env.REACT_APP_CONTENTFUL_API_SPACE,
 });
 
 export default function App() {
