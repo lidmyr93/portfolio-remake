@@ -77,7 +77,7 @@ export const StyledExternalLink = styled.a`
   background: ${(props) => props.theme.menuText};
   border-radius: 5px;
   min-width: 100px;
-
+  cursor: ${props => props.cursor ? "pointer" : "not-allowed"};
   text-align: center;
   margin-bottom: 5px;
 

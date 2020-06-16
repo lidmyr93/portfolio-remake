@@ -72,6 +72,7 @@ export const ProjectModal = ({ closeModal, data }) => {
               <StyledExternalLink
                 href={data.webpage ? data.webpage : null}
                 target="blank"
+                cursor={data.webpage ? data.webpage : null}
               >
                 <FontAwesomeIcon icon={["fas", "globe"]} />
               </StyledExternalLink>
@@ -91,6 +92,7 @@ export const ProjectModal = ({ closeModal, data }) => {
               <StyledExternalLink
                 href={data.github ? data.github : null}
                 target="blank"
+                cursor={data.github ? data.github : null}
               >
                 <FontAwesomeIcon icon={["fab", "github"]} />
               </StyledExternalLink>
