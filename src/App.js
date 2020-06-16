@@ -6,7 +6,7 @@ import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import HomePage from "./components/pages/home/Home";
 import AboutPage from "./components/pages/about/About";
 import Menu from "./components/menu/Menu";
-import { localTheme, breakpoints } from "./theme/theme";
+import { localTheme } from "./theme/theme";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import {
