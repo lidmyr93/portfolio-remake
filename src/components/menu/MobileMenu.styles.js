@@ -13,7 +13,7 @@ export const MenuWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
   z-index: 10;
@@ -21,6 +21,9 @@ export const MenuWrapper = styled.div`
   transform: scale(
     ${({ state }) => (state === "entering" || state === "entered" ? 10 : 1)}
   );
+  @media screen and (min-width:600px){
+    display:none;
+  }
 `;
 
 export const BurgerIcon = styled(FontAwesomeIcon)`
@@ -37,13 +40,14 @@ export const Links = styled.div`
   z-index: 3;
   display: flex;
   flex-direction: column;
-  top: -40px;
+  top: -35px;
   right: 0px;
   opacity: ${({ state }) =>
     state === "entering" || state === "entered" ? 1 : 0};
   transform: scale(
     ${({ state }) => (state === "entering" || state === "entered" ? 0.2 : 1)}
   );
+  pointer-events: ${props => !props.menuOpen ? "none" : "initial"};
 `;
 export const StyledLink = styled(Link)`
   font-size: 1rem;

@@ -33,7 +33,7 @@ export const PageWrapper = styled.div`
   @media screen and (min-width: 600px) {
     height: 100vh;
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 1100px) {
     overflow: hidden;
     overflow-y: ${(props) => props.overflowY || "hidden"};
     grid-template-columns: ${(props) => props.columns || "1.5fr 1fr"};
@@ -47,6 +47,8 @@ export const ContentWrapper = styled.div`
   justify-content: space-evenly;
   padding: 1rem;
   color: ${(props) => props.theme.color};
+  ${ScrollBar};
+ 
 `;
 export const Grid = styled.div`
   display: grid;
@@ -75,12 +77,13 @@ export const FlexWrap = styled.div`
   align-items: inherit;
 `;
 export const TextBlock = styled.div`
-  width: 50%;
+  width: ${(props) => props.width || "50%"};
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased !important;
   -moz-font-smoothing: antialiased !important;
   text-rendering: optimizelegibility !important;
   letter-spacing: 0.03em;
+  color: ${(props) => props.color || "white"};
 `;
 
 export const Button = styled.button`
@@ -92,7 +95,8 @@ export const Button = styled.button`
   font-weight: ${(props) => props.fontWeight || "700"};
   color: ${(props) => props.color || props.theme.color};
   font-size: ${(props) => props.fontSize || "1.25rem"};
-  cursor: pointer;
+  cursor: ${props => !props.disabledStyle ? "not-allowed" : "pointer"};
+  filter: ${props => !props.disabledStyle && "blur(2px) grayscale(50%)"};
   &:hover {
     box-shadow: 0 0 1.5em ${(props) => props.hoverColor || props.theme.color};
   }

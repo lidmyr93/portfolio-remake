@@ -13,7 +13,7 @@ const MoveOnHover = keyframes`
 export const CardImage = styled.div`
   background: url(${(props) => props.background || "black"});
   width: 100%;
-  height: 40%;
+  height: 60%;
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@ export const CardImage = styled.div`
 export const CardTitle = styled.div`
   background: ${(props) => props.theme.linearGradient};
   width: calc(100% - 0.5rem);
-  height: 20%;
+  height: 30%;
   border-bottom: 5px solid ${(props) => props.theme.menuText};
   display: flex;
   align-items: center;
@@ -31,7 +31,7 @@ export const CardTitle = styled.div`
 `;
 export const CardText = styled.div`
   width: calc(100% - 1rem);
-  height: 80%;
+  height: 70%;
   padding: ${(props) => props.theme.paddingSm};
   margin: 0;
 `;

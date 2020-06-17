@@ -1,18 +1,18 @@
 import React from "react";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import  {StyledCarousel} from "./styles"
 const responsive = {
   desktop: {
     breakpoint: {
       max: 3000,
-      min: 1024,
+      min: 0,
     },
     items: 1,
   },
 };
 const Slider = ({ children }) => {
   return (
-    <Carousel
+    <StyledCarousel
       additionalTransfrom={0}
       autoPlay={true}
       autoPlaySpeed={5000}
@@ -36,7 +36,7 @@ const Slider = ({ children }) => {
       swipeable
     >
       {children}
-    </Carousel>
+    </StyledCarousel>
   );
 };
 export default Slider;

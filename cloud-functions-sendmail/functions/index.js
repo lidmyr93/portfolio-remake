@@ -5,8 +5,8 @@ const cors = require("cors")({ origin: true });
 const mailTransport = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "lidmyrm@gmail.com",
-    pass: "!12qwaszx",
+    user: `${functions.config().app.user}`,
+    pass: `${functions.config().app.pass}`,
   },
 });
 

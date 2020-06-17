@@ -1,33 +1,115 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useRef, useEffect, useCallback } from "react";
 
-const ModalWrapper = styled.div`
-  color: white;
-  background: black;
-  opacity: 1;
-  z-index: 100000000;
-`;
+import {
+  ModalWrapper,
+  CloseModalButton,
+  ModalImage,
+  StyledExternalLink,
+  HeaderWrapper,
+  TextWrapper,
+  LowerProjectWrapper,
+  LinkWrapper,
+} from "./projectmodal.styles";
+import { optimizeContentfulImage } from "../../../Utils/contentfulImage";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FlexWrapper } from "../../../styles/general";
 
 export const ProjectModal = ({ closeModal, data }) => {
-  console.log("modal", data);
-  /* 
-    github,
-    picture,
-    project,
-    text,
-    title,
-    webpage,
-  */
+  const ref = useRef(null);
+  const escapeListener = useCallback(
+    (e) => {
+      if (e.key === "Escape") {
+        closeModal();
+      }
+    },
+    [closeModal]
+  );
+
+  const clickListener = useCallback(
+    (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        closeModal();
+      }
+    },
+    [closeModal]
+  );
+
+  useEffect(() => {
+    document.addEventListener("click", clickListener);
+    document.addEventListener("keyup", escapeListener);
+
+    return () => {
+      document.removeEventListener("click", clickListener);
+      document.removeEventListener("keyup", escapeListener);
+    };
+  });
+
   return (
-    <ModalWrapper>
-      <p onClick={closeModal}>X</p>
-      <h1>{data.title}</h1>
-      <p>{data.text}</p>
-      <img
-        src={`https:${data.picture.fields.file.url}`}
-        alt="hej"
-        style={{ width: "500px", height: "500px" }}
+    <ModalWrapper ref={ref}>
+      <CloseModalButton onClick={closeModal}>
+        <FontAwesomeIcon icon={["fas", "times-circle"]} />
+      </CloseModalButton>
+      <ModalImage
+        background={optimizeContentfulImage(
+          data.picture.fields.file.url,
+          800,
+          400
+        )}
       />
+
+      <HeaderWrapper>
+        <h1>{data.title}</h1>
+      </HeaderWrapper>
+
+      <LowerProjectWrapper>
+        <TextWrapper>{data.text}</TextWrapper>
+
+        <FlexWrapper>
+          <LinkWrapper>
+            <FlexWrapper>
+              <StyledExternalLink
+                href={data.webpage ? data.webpage : null}
+                target="blank"
+                cursor={data.webpage ? data.webpage : null}
+              >
+                <FontAwesomeIcon icon={["fas", "globe"]} />
+              </StyledExternalLink>
+              {data.webpage ? (
+                <FontAwesomeIcon
+                  icon={["fas", "check-circle"]}
+                  style={{ color: "green", paddingLeft: "5px" }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={["fas", "exclamation-triangle"]}
+                  style={{ color: "red", paddingLeft: "5px" }}
+                />
+              )}
+            </FlexWrapper>
+            <FlexWrapper>
+              <StyledExternalLink
+                href={data.github ? data.github : null}
+                target="blank"
+                cursor={data.github ? data.github : null}
+              >
+                <FontAwesomeIcon icon={["fab", "github"]} />
+              </StyledExternalLink>
+              {data.github ? (
+                <FontAwesomeIcon
+                  icon={["fas", "check-circle"]}
+                  style={{ color: "green", paddingLeft: "5px" }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={["fas", "exclamation-triangle"]}
+                  style={{ color: "red", paddingLeft: "5px" }}
+                />
+              )}
+            </FlexWrapper>
+          </LinkWrapper>
+        </FlexWrapper>
+      </LowerProjectWrapper>
     </ModalWrapper>
   );
 };

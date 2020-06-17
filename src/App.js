@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
@@ -6,7 +6,7 @@ import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import HomePage from "./components/pages/home/Home";
 import AboutPage from "./components/pages/about/About";
 import Menu from "./components/menu/Menu";
-import { localTheme, breakpoints } from "./theme/theme";
+import { localTheme } from "./theme/theme";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -18,12 +18,18 @@ import {
   faPhone,
   faComment,
   faBars,
+  faCheckCircle,
+  faExclamationTriangle,
+  faGlobe,
+  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import ContactPage from "./components/pages/contact/Contact";
 import ProjectsPage from "./components/pages/projects/Projects";
 import { ModalContextProvider } from "./components/modal/ModalContext";
 import ModalManager from "./components/modal/ModalController";
 import MobileMenu from "./components/menu/MobileMenu";
+
+require("dotenv").config();
 library.add(
   faHome,
   faMale,
@@ -34,7 +40,11 @@ library.add(
   faSignature,
   faPhone,
   faComment,
-  faBars
+  faBars,
+  faCheckCircle,
+  faExclamationTriangle,
+  faGlobe,
+  faTimesCircle
 );
 
 const AppWrapper = styled.div`
@@ -59,12 +69,22 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 const contentfulClient = new ContentfulClient({
-  accessToken: "rEfxUOCakqjgvhGSYtGs6ONNU1OoSMj82Z9QtbRPxxM",
-  space: "nj3jg45os9hx",
+  accessToken: process.env.REACT_APP_CONTENTFUL_API_KEY,
+  space: process.env.REACT_APP_CONTENTFUL_API_SPACE,
 });
 
 export default function App() {
-  return (
+  const [locale, setLocale] = useState(null);
+  
+  
+  useEffect(() => {
+    if(!localStorage.getItem('locale')){
+      localStorage.setItem("locale", "en-US")
+      setLocale("en-US");
+    }
+    setLocale(localStorage.getItem("locale"))
+  }, [locale])
+  return locale && (
     <ThemeProvider theme={localTheme}>
       <ContentfulProvider client={contentfulClient}>
         <GlobalStyle />
@@ -72,7 +92,7 @@ export default function App() {
           <ModalManager />
           <Router>
             <AppWrapper>
-              <Menu />
+              <Menu setLocale={setLocale}/>
               <MobileMenu />
               <Route
                 render={({ location }) => {
@@ -85,10 +105,23 @@ export default function App() {
                           key={location.key}
                         >
                           <Switch location={location}>
-                            <Route exact path="/" component={HomePage} />
-                            <Route path="/about" component={AboutPage} />
-                            <Route path="/contact" component={ContactPage} />
-                            <Route path="/projects" component={ProjectsPage} />
+                            <Route
+                              exact
+                              path="/"
+                              render={() => <HomePage locale={locale} />}
+                            />
+                            <Route
+                              path="/about"
+                              render={() => <AboutPage locale={locale} />}
+                            />
+                            <Route
+                              path="/contact"
+                              render={() => <ContactPage locale={locale} />}
+                            />
+                            <Route
+                              path="/projects"
+                              render={() => <ProjectsPage locale={locale} />}
+                            />
                           </Switch>
                         </CSSTransition>
                       </TransitionGroup>
