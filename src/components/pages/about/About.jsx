@@ -21,9 +21,11 @@ import Slider from "../../slider/Slider";
 import { SliderImage } from "../../slider/styles";
 import Spinner from "../../loading/Loading";
 import { optimizeContentfulImage } from "../../../Utils/contentfulImage";
+import { getLocale } from "../../../Utils/localehandler";
 const AboutPage = () => {
   const { data, error, fetched, loading } = useContentful({
     contentType: "about",
+    locale: getLocale()
   });
   if (loading || !fetched) {
     return <Spinner />;

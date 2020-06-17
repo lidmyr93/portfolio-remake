@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
@@ -28,7 +28,8 @@ import ProjectsPage from "./components/pages/projects/Projects";
 import { ModalContextProvider } from "./components/modal/ModalContext";
 import ModalManager from "./components/modal/ModalController";
 import MobileMenu from "./components/menu/MobileMenu";
-require('dotenv').config();
+
+require("dotenv").config();
 library.add(
   faHome,
   faMale,
@@ -73,7 +74,17 @@ const contentfulClient = new ContentfulClient({
 });
 
 export default function App() {
-  return (
+  const [locale, setLocale] = useState(null);
+  
+  
+  useEffect(() => {
+    if(!localStorage.getItem('locale')){
+      localStorage.setItem("locale", "en-US")
+      setLocale("en-US");
+    }
+    setLocale(localStorage.getItem("locale"))
+  }, [locale])
+  return locale && (
     <ThemeProvider theme={localTheme}>
       <ContentfulProvider client={contentfulClient}>
         <GlobalStyle />
@@ -81,7 +92,7 @@ export default function App() {
           <ModalManager />
           <Router>
             <AppWrapper>
-              <Menu />
+              <Menu setLocale={setLocale}/>
               <MobileMenu />
               <Route
                 render={({ location }) => {
@@ -94,10 +105,23 @@ export default function App() {
                           key={location.key}
                         >
                           <Switch location={location}>
-                            <Route exact path="/" component={HomePage} />
-                            <Route path="/about" component={AboutPage} />
-                            <Route path="/contact" component={ContactPage} />
-                            <Route path="/projects" component={ProjectsPage} />
+                            <Route
+                              exact
+                              path="/"
+                              render={() => <HomePage locale={locale} />}
+                            />
+                            <Route
+                              path="/about"
+                              render={() => <AboutPage locale={locale} />}
+                            />
+                            <Route
+                              path="/contact"
+                              render={() => <ContactPage locale={locale} />}
+                            />
+                            <Route
+                              path="/projects"
+                              render={() => <ProjectsPage locale={locale} />}
+                            />
                           </Switch>
                         </CSSTransition>
                       </TransitionGroup>

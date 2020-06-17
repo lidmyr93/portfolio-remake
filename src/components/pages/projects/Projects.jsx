@@ -7,6 +7,7 @@ import { GridContainer, Item } from "./styles";
 import { ModalContext } from "../../modal/ModalContext";
 import { optimizeContentfulImage } from "../../../Utils/contentfulImage";
 import Spinner from "../../loading/Loading";
+import { getLocale } from "../../../Utils/localehandler";
 
 const ProjectsPage = () => {
   const { setCurrentModal } = useContext(ModalContext);
@@ -15,6 +16,7 @@ const ProjectsPage = () => {
   };
   const { data, error, fetched, loading} = useContentful({
     contentType: "projects",
+    locale: getLocale()
   });
   
   if (loading || !fetched) {

@@ -11,17 +11,19 @@ import { TransitionWrapper } from "../../../styles/page-transition/index";
 import Card from "../../card/Card";
 import { ModalContext } from "../../modal/ModalContext";
 import Spinner from "../../loading/Loading";
+import { getLocale } from "../../../Utils/localehandler";
 
-const HomePage = () => {
+
+const HomePage = ({locale}) => {
   const { setCurrentModal } = useContext(ModalContext);
-
   const { data, error, fetched, loading } = useContentful({
     contentType: "projects",
     query: {
       limit: 4,
+      locale: getLocale()
     },
   });
- 
+  
   if (loading || !fetched) {
     return <Spinner />;
   }
