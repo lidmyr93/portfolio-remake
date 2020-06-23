@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
@@ -30,6 +30,7 @@ import ModalManager from "./components/modal/ModalController";
 import MobileMenu from "./components/menu/MobileMenu";
 
 require("dotenv").config();
+console.log(process.env);
 library.add(
   faHome,
   faMale,
@@ -75,64 +76,65 @@ const contentfulClient = new ContentfulClient({
 
 export default function App() {
   const [locale, setLocale] = useState(null);
-  
-  
+
   useEffect(() => {
-    if(!localStorage.getItem('locale')){
-      localStorage.setItem("locale", "en-US")
+    if (!localStorage.getItem("locale")) {
+      localStorage.setItem("locale", "en-US");
       setLocale("en-US");
     }
-    setLocale(localStorage.getItem("locale"))
-  }, [locale])
-  return locale && (
-    <ThemeProvider theme={localTheme}>
-      <ContentfulProvider client={contentfulClient}>
-        <GlobalStyle />
-        <ModalContextProvider>
-          <ModalManager />
-          <Router>
-            <AppWrapper>
-              <Menu setLocale={setLocale}/>
-              <MobileMenu />
-              <Route
-                render={({ location }) => {
-                  return (
-                    <div>
-                      <TransitionGroup component={null}>
-                        <CSSTransition
-                          timeout={1000}
-                          classNames="page"
-                          key={location.key}
-                        >
-                          <Switch location={location}>
-                            <Route
-                              exact
-                              path="/"
-                              render={() => <HomePage locale={locale} />}
-                            />
-                            <Route
-                              path="/about"
-                              render={() => <AboutPage locale={locale} />}
-                            />
-                            <Route
-                              path="/contact"
-                              render={() => <ContactPage locale={locale} />}
-                            />
-                            <Route
-                              path="/projects"
-                              render={() => <ProjectsPage locale={locale} />}
-                            />
-                          </Switch>
-                        </CSSTransition>
-                      </TransitionGroup>
-                    </div>
-                  );
-                }}
-              />
-            </AppWrapper>
-          </Router>
-        </ModalContextProvider>
-      </ContentfulProvider>
-    </ThemeProvider>
+    setLocale(localStorage.getItem("locale"));
+  }, [locale]);
+  return (
+    locale && (
+      <ThemeProvider theme={localTheme}>
+        <ContentfulProvider client={contentfulClient}>
+          <GlobalStyle />
+          <ModalContextProvider>
+            <ModalManager />
+            <Router>
+              <AppWrapper>
+                <Menu setLocale={setLocale} />
+                <MobileMenu />
+                <Route
+                  render={({ location }) => {
+                    return (
+                      <div>
+                        <TransitionGroup component={null}>
+                          <CSSTransition
+                            timeout={1000}
+                            classNames="page"
+                            key={location.key}
+                          >
+                            <Switch location={location}>
+                              <Route
+                                exact
+                                path="/"
+                                render={() => <HomePage locale={locale} />}
+                              />
+                              <Route
+                                path="/about"
+                                render={() => <AboutPage locale={locale} />}
+                              />
+                              <Route
+                                path="/contact"
+                                render={() => <ContactPage locale={locale} />}
+                              />
+                              <Route
+                                path="/projects"
+                                render={() => <ProjectsPage locale={locale} />}
+                              />
+                            </Switch>
+                          </CSSTransition>
+                        </TransitionGroup>
+                      </div>
+                    );
+                  }}
+                />
+              </AppWrapper>
+            </Router>
+          </ModalContextProvider>
+        </ContentfulProvider>
+      </ThemeProvider>
+    )
   );
 }

@@ -3,11 +3,13 @@ import React from "react";
 import { MenuWrapper, LinkWrapper, Social, StyledSvg, SvgLink } from "./styles";
 import IconLink from "../icon-link/IconLink";
 import { saveLocale } from "../../Utils/localehandler";
+import { LanguageFlag } from "../languageflag/LanguageFlag";
+import { FlexWrapper } from "../../styles/general";
 
-const Menu = ({setLocale}) => {
+const Menu = ({ setLocale }) => {
   return (
     <MenuWrapper>
-      <div>
+      <FlexWrapper column>
         <SvgLink to="/">
           <StyledSvg
             id="header-logo"
@@ -32,17 +34,18 @@ const Menu = ({setLocale}) => {
           </StyledSvg>
         </SvgLink>
         <div>
-        <img src="https://www.countryflags.io/se/shiny/32.png" alt="SWE" onClick={() => {
-              setLocale("sv");
-              saveLocale("sv");
-            }}/>
-          <img src="https://www.countryflags.io/gb/shiny/32.png" alt="EN" onClick={() => {
-              setLocale("en");
-              saveLocale("en");
-            }}/>
-          
+          <LanguageFlag
+            setLocale={setLocale}
+            saveLocale={saveLocale}
+            langCode="sv"
+          />
+          <LanguageFlag
+            setLocale={setLocale}
+            saveLocale={saveLocale}
+            langCode="en"
+          />
         </div>
-      </div>
+      </FlexWrapper>
 
       <LinkWrapper>
         <IconLink text="Home" to="/" icon={["fas", "home"]} height="50px" />

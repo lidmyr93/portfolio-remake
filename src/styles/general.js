@@ -48,14 +48,13 @@ export const ContentWrapper = styled.div`
   padding: 1rem;
   color: ${(props) => props.theme.color};
   ${ScrollBar};
- 
 `;
 export const Grid = styled.div`
   display: grid;
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   grid-template-columns: 1fr;
-
+  position: relative;
   @media screen and (min-width: 600px) {
   }
   @media screen and (min-width: 1000px) {
@@ -95,13 +94,23 @@ export const Button = styled.button`
   font-weight: ${(props) => props.fontWeight || "700"};
   color: ${(props) => props.color || props.theme.color};
   font-size: ${(props) => props.fontSize || "1.25rem"};
-  cursor: ${props => !props.disabledStyle ? "not-allowed" : "pointer"};
-  filter: ${props => !props.disabledStyle && "blur(2px) grayscale(50%)"};
+  cursor: ${(props) => (!props.disabledStyle ? "not-allowed" : "pointer")};
+  filter: ${(props) => !props.disabledStyle && "blur(2px) grayscale(50%)"};
   &:hover {
     box-shadow: 0 0 1.5em ${(props) => props.hoverColor || props.theme.color};
   }
 `;
-
+export const RelativeWrapper = styled.div`
+  display: none;
+  @media screen and (min-width: 1120px) {
+    position: relative;
+    height: 300px;
+    width: 100px;
+    display: flex;
+    align-self: ${(props) => props.align || "center"};
+    align-items: ${(props) => props.align || "center"};
+  }
+`;
 export const VerticalHeader = styled.h2`
   display: none;
 
@@ -109,17 +118,19 @@ export const VerticalHeader = styled.h2`
     display: block;
     width: min-content;
     height: min-content;
+    width: 100px;
     font-size: ${(props) => props.fontSize || "initial"};
     color: ${(props) => props.theme.color};
     text-decoration: underline;
     margin: 0;
     transform: ${(props) => props.right && "rotate(90deg)"};
     transform: ${(props) => props.left && "rotate(270deg)"};
-    transform-origin: ${(props) => props.right && "center"};
-    transform-origin: ${(props) => props.left && "center"};
-    margin-top: ${(props) => props.top && "30px"};
-    margin-bottom: ${(props) => props.bottom && "30px"};
-    align-self: ${(props) => props.bottom && "flex-end"};
-    justify-self: ${(props) => props.bottom && "flex-end"};
+    /* transform-origin: ${(props) => props.right && "center center"};
+    transform-origin: ${(props) => props.left && "center center"}; */
+    /* margin-top: ${(props) => props.top && "30px"};
+    margin-bottom: ${(props) => props.bottom && "30px"}; */
+    position: absolute;
+    top: ${(props) => props.right && "105px"};
+    bottom: ${(props) => props.left && "50px"};
   }
 `;
