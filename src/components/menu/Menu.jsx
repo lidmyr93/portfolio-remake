@@ -48,21 +48,16 @@ const Menu = ({ setLocale }) => {
       </FlexWrapper>
 
       <LinkWrapper>
-        <IconLink text="Home" to="/" icon={["fas", "home"]} height="50px" />
+        <IconLink id="home" to="/" icon={["fas", "home"]} height="50px" />
+        <IconLink id="about" to="/about" icon={["fas", "male"]} height="50px" />
         <IconLink
-          text="About"
-          to="/about"
-          icon={["fas", "male"]}
-          height="50px"
-        />
-        <IconLink
-          text="Contact"
+          id="contact"
           to="/contact"
           icon={["fas", "envelope"]}
           height="50px"
         />
         <IconLink
-          text="Projects"
+          id="projects"
           to="/projects"
           icon={["fa", "cog"]}
           height="50px"

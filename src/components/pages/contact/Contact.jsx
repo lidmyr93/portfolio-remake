@@ -13,7 +13,8 @@ import {
   simpleTextValidation,
   simpleEmailValidation,
 } from "../../../Utils/validation";
-
+import { useIntl } from "react-intl";
+import translate from "../../../i18n/messages/translate";
 const ContactPage = () => {
   const [emailData, setEmailData] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -106,6 +107,7 @@ const ContactPage = () => {
     }
     return false;
   };
+  const intl = useIntl();
   return (
     <PageWrapper single>
       <FlexWrapper>
@@ -115,7 +117,7 @@ const ContactPage = () => {
             <StyledInput
               type="text"
               onChange={(e) => handleChange(e)}
-              placeholder="Name"
+              placeholder={intl.formatMessage({ id: "name" })}
               name="from"
               validation={validationCheck && validationCheck.from}
             />
@@ -126,7 +128,7 @@ const ContactPage = () => {
             <StyledInput
               type="text"
               onChange={(e) => handleChange(e)}
-              placeholder="Email"
+              placeholder={intl.formatMessage({ id: "email" })}
               name="email"
               validation={validationCheck && validationCheck.email}
             />
@@ -136,7 +138,7 @@ const ContactPage = () => {
             <StyledInput
               type="text"
               onChange={(e) => handleChange(e)}
-              placeholder="Number"
+              placeholder={intl.formatMessage({ id: "number" })}
               name="number"
             />
           </StyledLabel>
@@ -145,7 +147,7 @@ const ContactPage = () => {
             <StyledTextArea
               type="text"
               name="message"
-              placeholder="Message..."
+              placeholder={intl.formatMessage({ id: "message" })}
               onChange={(e) => handleChange(e)}
               validation={validationCheck && validationCheck.message}
             />
@@ -159,7 +161,7 @@ const ContactPage = () => {
             disabled={!check()}
             disabledStyle={check()}
           >
-            Send
+            {translate("send")}
           </Button>
           {mailSent && (
             <MailStatus

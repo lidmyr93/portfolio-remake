@@ -13,7 +13,7 @@ import Card from "../../card/Card";
 import { ModalContext } from "../../modal/ModalContext";
 import Spinner from "../../loading/Loading";
 import { getLocale } from "../../../Utils/localehandler";
-
+import translate from "../../../i18n/messages/translate";
 const HomePage = ({ locale }) => {
   const { setCurrentModal } = useContext(ModalContext);
   const { data, error, fetched, loading } = useContentful({
@@ -44,7 +44,7 @@ const HomePage = ({ locale }) => {
           <Grid columns="auto auto auto" rows="auto">
             <RelativeWrapper align="flex-end">
               <VerticalHeader fontSize="2rem" left bottom alignSelf="flex-end">
-                Hello
+                {translate("greeting")}
               </VerticalHeader>
             </RelativeWrapper>
             <Grid
@@ -64,8 +64,11 @@ const HomePage = ({ locale }) => {
             <RelativeWrapper align="flex-start">
               <VerticalHeader fontSize="2rem" right top alignSelf="flex-start">
                 <FlexWrapper>
-                  <div style={{ marginRight: "5px" }}>Latest </div>
-                  <div>Projects</div>
+                  <div style={{ marginRight: "5px" }}>
+                    {translate("latest")}
+                  </div>
+
+                  <div>{translate("projects")}</div>
                 </FlexWrapper>
               </VerticalHeader>
             </RelativeWrapper>
