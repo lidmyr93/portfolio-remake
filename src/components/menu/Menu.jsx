@@ -66,7 +66,7 @@ const Menu = ({ setLocale }) => {
 
       <Social>
         <IconLink
-          to="https://www.linkedin.com/in/magnus-lidmyr-096853149/"
+          to="https://www.linkedin.com/in/magnus-lidmyr"
           icon={["fab", "linkedin"]}
           height="auto"
           external
