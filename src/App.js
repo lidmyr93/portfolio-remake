@@ -29,7 +29,7 @@ import ProjectsPage from "./components/pages/projects/Projects";
 import { ModalContextProvider } from "./components/modal/ModalContext";
 import ModalManager from "./components/modal/ModalController";
 import MobileMenu from "./components/menu/MobileMenu";
-
+require("typeface-alegreya-sans");
 require("dotenv").config();
 
 library.add(
@@ -68,6 +68,7 @@ const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
+    font-family: 'Alegreya Sans', sans-serif;
   }
 `;
 const contentfulClient = new ContentfulClient({

@@ -160,6 +160,7 @@ const ContactPage = () => {
             onClick={(e) => handleSubmit(e)}
             disabled={!check()}
             disabledStyle={check()}
+            style={{ marginTop: "1rem" }}
           >
             {translate("send")}
           </Button>

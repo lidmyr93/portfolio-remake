@@ -21,8 +21,8 @@ export const MenuWrapper = styled.div`
   transform: scale(
     ${({ state }) => (state === "entering" || state === "entered" ? 10 : 1)}
   );
-  @media screen and (min-width:600px){
-    display:none;
+  @media screen and (min-width: 600px) {
+    display: none;
   }
 `;
 
@@ -41,13 +41,13 @@ export const Links = styled.div`
   display: flex;
   flex-direction: column;
   top: -35px;
-  right: 0px;
+  right: 5px;
   opacity: ${({ state }) =>
     state === "entering" || state === "entered" ? 1 : 0};
   transform: scale(
     ${({ state }) => (state === "entering" || state === "entered" ? 0.2 : 1)}
   );
-  pointer-events: ${props => !props.menuOpen ? "none" : "initial"};
+  pointer-events: ${(props) => (!props.menuOpen ? "none" : "initial")};
 `;
 export const StyledLink = styled(Link)`
   font-size: 1rem;
