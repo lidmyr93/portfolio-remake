@@ -39,8 +39,8 @@ const HomePage = ({locale}) => {
 
   return (
     <TransitionWrapper className="page">
-      <PageWrapper single>
-        <FlexWrapper>
+      <PageWrapper single overflowY="scroll">
+        <FlexWrapper >
           <Grid columns="auto auto auto" rows="auto">
             <VerticalHeader fontSize="2rem" left bottom alignSelf="flex-end">
               Hello
