@@ -14,11 +14,11 @@ const ProjectsPage = () => {
   const openModal = (projectData) => {
     setCurrentModal({ type: "ProjectModal", data: projectData });
   };
-  const { data, error, fetched, loading} = useContentful({
+  const { data, error, fetched, loading } = useContentful({
     contentType: "projects",
-    locale: getLocale()
+    locale: getLocale(),
   });
-  
+
   if (loading || !fetched) {
     return <Spinner />;
   }
@@ -32,16 +32,16 @@ const ProjectsPage = () => {
 
   const imageResize = (url, weight) => {
     let size = {};
-    if(weight === 1) {
+    if (weight === 1) {
       size.height = 400;
       size.width = 600;
     }
-    if(weight === 2){
+    if (weight === 2) {
       size.height = 400;
       size.width = 900;
     }
-    return optimizeContentfulImage(url, size.width, size.height)
-  }
+    return optimizeContentfulImage(url, size.width, size.height);
+  };
   return (
     <TransitionWrapper>
       <PageWrapper single overflowY="auto">
@@ -50,10 +50,14 @@ const ProjectsPage = () => {
             {data.items.map((item) => (
               <Item
                 weight={item.fields.weight}
-                background={imageResize(item.fields.picture.fields.file.url, item.fields.weight)}
+                background={imageResize(
+                  item.fields.picture.fields.file.url,
+                  item.fields.weight
+                )}
                 className={item.fields.weight === 1 ? "medium" : "big"}
                 size={item.fields.weight}
                 onClick={() => openModal(item.fields)}
+                key={item.fields.project}
               />
             ))}
           </GridContainer>

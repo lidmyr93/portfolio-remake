@@ -1,10 +1,7 @@
 import React from "react";
 import { useContentful } from "react-contentful";
 import { TransitionWrapper } from "../../../styles/page-transition/index";
-import {
-  PageWrapper,
-  ContentWrapper,
-} from "../../../styles/general";
+import { PageWrapper, ContentWrapper } from "../../../styles/general";
 import { Markdown } from "../../markdown/Markdown";
 import {
   MarkdownList,
@@ -25,7 +22,7 @@ import { getLocale } from "../../../Utils/localehandler";
 const AboutPage = () => {
   const { data, error, fetched, loading } = useContentful({
     contentType: "about",
-    locale: getLocale()
+    locale: getLocale(),
   });
   if (loading || !fetched) {
     return <Spinner />;
@@ -65,9 +62,12 @@ const AboutPage = () => {
 
           <MarkdownList>
             {content.skills.map((skill, i) => (
-              <PostIt randomstyle={randomPostItStyle()}>
+              <PostIt
+                randomstyle={randomPostItStyle()}
+                key={skill.fields.title}
+              >
                 <h1>{skill.fields.title}</h1>
-                <Markdown content={skill.fields.markdown} type="card" key={i} />
+                <Markdown content={skill.fields.markdown} type="card" />
               </PostIt>
             ))}
           </MarkdownList>

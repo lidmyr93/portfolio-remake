@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import translate from "../../i18n/messages/translate";
 const LinkText = styled.p`
   display: none;
   font-size: 1.25rem;
@@ -39,15 +40,15 @@ const StyledAnchor = styled.a`
   ${linkcss}
 `;
 
-const IconLink = ({ text, to, icon, height, external }) => {
+const IconLink = ({ id, to, icon, height, external }) => {
   return !external ? (
-    <StyledLink to={to} text={text} icon={icon} height={height}>
-      {text && <LinkText>{text}</LinkText>}
+    <StyledLink to={to} text={id} icon={icon} height={height}>
+      {id && <LinkText>{translate(id)}</LinkText>}
       {icon && <StyledIcon icon={icon} />}
     </StyledLink>
   ) : (
     <StyledAnchor href={to} target="blank">
-      {text && <LinkText>{text}</LinkText>}
+      {id && <LinkText>{translate(id)}</LinkText>}
       {icon && <StyledIcon icon={icon} />}
     </StyledAnchor>
   );

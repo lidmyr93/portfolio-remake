@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const MarkdownList = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -23,24 +22,23 @@ export const StyledFigure = styled.div`
   padding-right: 16px;
 `;
 export const Portrait = styled.img`
-max-width: 100%;
+  max-width: 100%;
   width: 200px;
   height: auto;
   display: block;
   margin: 0 auto 10px auto;
-  box-shadow: -1px 1px 7px 2px rgba(0,0,0,0.75);
-  @media screen and (min-width: 600px){
+  box-shadow: -1px 1px 7px 2px rgba(0, 0, 0, 0.75);
+  @media screen and (min-width: 600px) {
     float: left;
     margin: 0 15px 0 0;
   }
 `;
 export const SliderWrapper = styled.div`
   display: none;
-    @media screen and (min-width: 1000px){
-      display: initial;
-    }
-  `;
-
+  @media screen and (min-width: 1000px) {
+    display: initial;
+  }
+`;
 
 export const Paper = styled.div`
   max-width: 800px;
@@ -51,7 +49,7 @@ export const Paper = styled.div`
   margin-bottom: 20px;
   padding-top: 40px;
   padding-bottom: 40px;
-  background: #fefabc linear-gradient(150deg,#efec88 0%,#fefabc 100%);
+  background: #fefabc linear-gradient(150deg, #efec88 0%, #fefabc 100%);
   box-shadow: 0px 0px 5px 0px #888;
   &::before {
     content: "";
@@ -66,10 +64,13 @@ export const Paper = styled.div`
 
 export const Pattern = styled.div`
   height: 100%;
-  background-image: repeating-linear-gradient(rgba(0,0,0,0) 0px, rgba(0,0,0,0) 24px, teal 25px);
+  background-image: repeating-linear-gradient(
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 24px,
+    teal 25px
+  );
 `;
 export const PaperContent = styled.div`
-  
   line-height: 25px;
   font-family: "Dancing Script", cursive;
   font-size: 19px;
@@ -89,27 +90,25 @@ export const PostIt = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: ${props => props.randomstyle && props.randomstyle.color };
+  background: ${(props) => props.randomstyle && props.randomstyle.color};
 
-  transform: ${props => props.randomstyle && `rotate(${props.randomstyle.rotate}deg )`};
+  transform: ${(props) =>
+    props.randomstyle && `rotate(${props.randomstyle.rotate}deg )`};
   &:hover {
     transform: scale(1.05);
   }
 
-  
-  
-
-   h1, p {
-  font-family: 'Indie Flower', cursive;
-  font-size: 1.5em;
-  text-align:center;
-  margin: 0.5em 0 0;
-  line-height:1.2em;
-  font-weight:bold;
-  color:#036;
-}
-p{
-  font-size:1.1em;
-  margin: 0rem 0;
-}
+  h1,
+  p {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0.5em 0 0;
+    line-height: 1.2em;
+    font-weight: bold;
+    color: #036;
+  }
+  p {
+    font-size: 1rem;
+    margin: 0rem 0;
+  }
 `;

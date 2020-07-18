@@ -14,6 +14,7 @@ import { optimizeContentfulImage } from "../../../Utils/contentfulImage";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FlexWrapper } from "../../../styles/general";
+import { Markdown } from "../../markdown/Markdown";
 
 export const ProjectModal = ({ closeModal, data }) => {
   const ref = useRef(null);
@@ -63,7 +64,9 @@ export const ProjectModal = ({ closeModal, data }) => {
       </HeaderWrapper>
 
       <LowerProjectWrapper>
-        <TextWrapper>{data.text}</TextWrapper>
+        <TextWrapper>
+          <Markdown content={data.text} />
+        </TextWrapper>
 
         <FlexWrapper>
           <LinkWrapper>

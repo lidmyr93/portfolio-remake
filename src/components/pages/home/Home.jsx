@@ -1,10 +1,11 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { useContentful } from "react-contentful";
 import {
   PageWrapper,
   FlexWrapper,
   Grid,
   VerticalHeader,
+  RelativeWrapper,
 } from "../../../styles/general";
 import { TransitionWrapper } from "../../../styles/page-transition/index";
 
@@ -12,18 +13,17 @@ import Card from "../../card/Card";
 import { ModalContext } from "../../modal/ModalContext";
 import Spinner from "../../loading/Loading";
 import { getLocale } from "../../../Utils/localehandler";
-
-
-const HomePage = ({locale}) => {
+import translate from "../../../i18n/messages/translate";
+const HomePage = ({ locale }) => {
   const { setCurrentModal } = useContext(ModalContext);
   const { data, error, fetched, loading } = useContentful({
     contentType: "projects",
     query: {
       limit: 4,
-      locale: getLocale()
+      locale: getLocale(),
     },
   });
-  
+
   if (loading || !fetched) {
     return <Spinner />;
   }
@@ -32,7 +32,7 @@ const HomePage = ({locale}) => {
     return null;
   }
   const content = data.items;
-  
+
   const openModal = (projectData) => {
     setCurrentModal({ type: "ProjectModal", data: projectData });
   };
@@ -42,9 +42,11 @@ const HomePage = ({locale}) => {
       <PageWrapper single overflowY="scroll">
         <FlexWrapper >
           <Grid columns="auto auto auto" rows="auto">
-            <VerticalHeader fontSize="2rem" left bottom alignSelf="flex-end">
-              Hello
-            </VerticalHeader>
+            <RelativeWrapper align="flex-end">
+              <VerticalHeader fontSize="2rem" left bottom alignSelf="flex-end">
+                {translate("greeting")}
+              </VerticalHeader>
+            </RelativeWrapper>
             <Grid
               columns="auto auto"
               rows="auto auto"
@@ -52,12 +54,24 @@ const HomePage = ({locale}) => {
               height="min-content"
             >
               {content.map((card) => (
-                <Card content={card} onClick={openModal} key={card.fields.project}/>
+                <Card
+                  content={card}
+                  onClick={openModal}
+                  key={card.fields.project}
+                />
               ))}
             </Grid>
-            <VerticalHeader fontSize="2rem" right top alignSelf="flex-start">
-              Latest Projects
-            </VerticalHeader>
+            <RelativeWrapper align="flex-start">
+              <VerticalHeader fontSize="2rem" right top alignSelf="flex-start">
+                <FlexWrapper>
+                  <div style={{ marginRight: "5px" }}>
+                    {translate("latest")}
+                  </div>
+
+                  <div>{translate("projects")}</div>
+                </FlexWrapper>
+              </VerticalHeader>
+            </RelativeWrapper>
           </Grid>
         </FlexWrapper>
       </PageWrapper>
