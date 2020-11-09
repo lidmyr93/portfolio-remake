@@ -32,6 +32,7 @@ export const PageWrapper = styled.div`
   ${ScrollBar};
   @media screen and (min-width: 600px) {
     height: 100vh;
+    overflow-y: ${(props) => props.overflowY || "hidden"};
   }
   @media screen and (min-width: 1100px) {
     overflow: hidden;
