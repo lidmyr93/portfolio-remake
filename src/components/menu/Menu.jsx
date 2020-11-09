@@ -50,12 +50,7 @@ const Menu = ({ setLocale }) => {
       <LinkWrapper>
         <IconLink id="home" to="/" icon={["fas", "home"]} height="50px" />
         <IconLink id="about" to="/about" icon={["fas", "male"]} height="50px" />
-        <IconLink
-          id="contact"
-          to="/contact"
-          icon={["fas", "envelope"]}
-          height="50px"
-        />
+
         <IconLink
           id="projects"
           to="/projects"

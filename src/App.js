@@ -128,10 +128,6 @@ export default function App() {
                                   render={() => <AboutPage locale={locale} />}
                                 />
                                 <Route
-                                  path="/contact"
-                                  render={() => <ContactPage locale={locale} />}
-                                />
-                                <Route
                                   path="/projects"
                                   render={() => (
                                     <ProjectsPage locale={locale} />

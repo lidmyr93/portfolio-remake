@@ -19,7 +19,7 @@ const MobileMenu = () => {
           <Links state={state} menuOpen={menuOpen}>
             <StyledLink to="/">Home</StyledLink>
             <StyledLink to="/about">About</StyledLink>
-            <StyledLink to="/contact">Contact</StyledLink>
+
             <StyledLink to="/projects">Projects</StyledLink>
           </Links>
           <BurgerIcon icon={["fas", "bars"]} state={state} />

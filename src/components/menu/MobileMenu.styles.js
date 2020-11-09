@@ -40,7 +40,7 @@ export const Links = styled.div`
   z-index: 3;
   display: flex;
   flex-direction: column;
-  top: -35px;
+  top: -22px;
   right: 5px;
   opacity: ${({ state }) =>
     state === "entering" || state === "entered" ? 1 : 0};
